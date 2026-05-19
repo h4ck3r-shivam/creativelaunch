@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Launch OS | AI Business Operating System for UK Creators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+:root{
+  /* Creative Launch OS Brand  Navy + Purple */
+  --purple:#7C3AED;
+  --purple-light:#A855F7;
+  --purple-dim:#6D28D9;
+  --purple-dark:#4C1D95;
+
+  /* Dark Backgrounds */
+  --bg-black:#020C1B;
+  --bg-deep:#04082A;
+  --bg-dark:#060C26;
+  --bg-card:#0A0F3C;
+
+  /* Navy Accents */
+  --navy:#0B1247;
+  --navy-mid:#0E1A5E;
+  --navy-light:#122575;
+  --navy-bright:#1A3AB0;
+  --blue-accent:#1A3AB0;
+  --blue-soft:#7B8EE8;
+  --blue-glow:rgba(26,58,176,0.15);
+
+  /* Light Sections */
+  --light-bg:#EEF0FB;
+  --light-card:#FFFFFF;
+  --light-border:#C8D0F4;
+  --text-dark:#030A1E;
+  --text-mid:#1A2558;
+  --text-muted:#455080;
+
+  /* Text on Dark */
+  --white:#FFFFFF;
+  --txt-secondary:#8A9BD0;
+  --txt-dim:#3A4A7A;
+
+  /* UI */
+  --card-bg:rgba(10,15,60,0.9);
+  --card-border:rgba(124,58,237,0.15);
+  --navy-card:rgba(11,18,71,0.8);
+  --navy-border:rgba(26,58,176,0.25);
+
+  --nav-h:72px;
+  --max-w:1200px;
+  --font:'Plus Jakarta Sans',sans-serif;
+  --display:'Sora',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --ease:cubic-bezier(0.4,0,0.2,1);
+  --ease-out:cubic-bezier(0,0,0.2,1);
+}
+
+body{font-family:var(--font);color:var(--white);background:var(--bg-black);overflow-x:hidden;}
+
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg-black);}
+::-webkit-scrollbar-thumb{background:var(--purple);border-radius:2px;}
+
+img{display:block;max-width:100%;}
+
+/* ─── NAVBAR ─────────────────────────────────────────── */
+.navbar{
+  position:fixed;top:0;left:0;width:100%;height:var(--nav-h);
+  background:rgba(2,12,27,0.96);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(124,58,237,0.12);
+  z-index:1000;display:flex;align-items:center;
+  padding:0 clamp(16px,5vw,60px);
+  justify-content:space-between;
+  transition:border-color 0.3s;
+}
+.nav-logo{
+  font-family:var(--display);font-size:22px;font-weight:800;
+  color:var(--purple-light);letter-spacing:-0.3px;
+  display:flex;align-items:center;gap:12px;
+  cursor:pointer;text-decoration:none;flex-shrink:0;
+}
+.nav-logo-icon{
+  width:40px;height:40px;
+  background:linear-gradient(135deg,var(--purple) 0%,var(--purple-dark) 100%);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  box-shadow:0 4px 14px rgba(124,58,237,0.3);
+  font-size:20px;
+}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1;}
+.nav-logo-text span{font-size:10px;font-family:var(--mono);font-weight:500;color:var(--txt-secondary);letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+
+.nav-links{display:flex;align-items:center;gap:4px;list-style:none;}
+.nav-links li button{
+  background:none;border:none;
+  color:var(--txt-secondary);
+  font-size:11px;font-weight:600;
+  padding:8px 16px;border-radius:7px;
+  transition:all 0.22s var(--ease);
+  cursor:pointer;font-family:var(--mono);
+  letter-spacing:0.8px;text-transform:uppercase;
+  position:relative;white-space:nowrap;
+}
+.nav-links li button:hover{color:var(--purple-light);background:rgba(124,58,237,0.06);}
+.nav-links li button.active{color:var(--purple-light);background:rgba(124,58,237,0.08);}
+.nav-links li button.active::after{
+  content:'';position:absolute;bottom:5px;left:50%;
+  transform:translateX(-50%);width:14px;height:2px;
+  background:var(--purple);border-radius:2px;
+}
+
+.nav-right{display:flex;align-items:center;gap:10px;}
+.btn-demo-nav{
+  background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+  color:var(--white);border:none;padding:9px 20px;border-radius:8px;
+  font-size:11px;font-weight:700;cursor:pointer;
+  transition:all 0.22s;font-family:var(--mono);
+  letter-spacing:0.8px;text-transform:uppercase;white-space:nowrap;
+  box-shadow:0 2px 10px rgba(124,58,237,0.2);
+}
+.btn-demo-nav:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(124,58,237,0.4);}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;flex-shrink:0;}
+.hamburger span{width:22px;height:2px;background:var(--purple-light);border-radius:2px;transition:0.3s;display:block;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.mobile-nav{
+  display:none;position:fixed;top:var(--nav-h);left:0;width:100%;
+  background:rgba(2,12,27,0.99);backdrop-filter:blur(20px);
+  padding:12px 20px 20px;flex-direction:column;gap:2px;
+  z-index:999;border-bottom:1px solid rgba(124,58,237,0.1);
+  animation:slideDown 0.25s var(--ease-out);
+}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);}}
+.mobile-nav.open{display:flex;}
+.mobile-nav button{
+  background:none;border:none;color:var(--txt-secondary);
+  font-size:13px;font-weight:600;padding:13px 12px;
+  border-bottom:1px solid rgba(124,58,237,0.06);
+  cursor:pointer;font-family:var(--mono);text-align:left;
+  text-transform:uppercase;letter-spacing:1px;
+  transition:color 0.2s,background 0.2s;border-radius:6px;
+}
+.mobile-nav button:hover{color:var(--purple-light);background:rgba(124,58,237,0.05);}
+.mobile-nav .mob-cta{
+  margin-top:8px;background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+  color:var(--white);border:none;padding:13px;
+  border-radius:8px;font-weight:700;font-size:12px;
+  letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+  font-family:var(--mono);
+}
+
+/* ─── PAGE SYSTEM ─────────────────────────────────────── */
+.page{display:none;min-height:100vh;padding-top:var(--nav-h);}
+.page.active{display:block;animation:pgIn 0.35s var(--ease);}
+@keyframes pgIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* ─── SECTION COMMONS ─────────────────────────────────── */
+.label-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:10px;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--purple-light);margin-bottom:14px;
+}
+.label-tag::before{content:'';width:20px;height:1px;background:var(--purple);}
+
+.label-tag-blue{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:10px;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--blue-soft);margin-bottom:14px;
+}
+.label-tag-blue::before{content:'';width:20px;height:1px;background:var(--blue-soft);}
+
+.section-h2{
+  font-family:var(--display);font-size:clamp(28px,3.5vw,52px);
+  font-weight:800;line-height:1.1;letter-spacing:-0.8px;
+  margin-bottom:10px;
+}
+.section-h2.green{color:var(--purple-light);}
+.section-h2.dark{color:var(--text-dark);}
+.section-h2.white{color:var(--white);}
+.section-h2.navy-txt{color:var(--navy-light);}
+
+.section-divider{width:56px;height:3px;margin:16px 0 28px;border-radius:2px;}
+.divider-green{background:linear-gradient(90deg,var(--purple),transparent);}
+.divider-blue{background:linear-gradient(90deg,var(--blue-accent),transparent);}
+.divider-center{margin:16px auto 28px;}
+
+.para-dark{color:var(--txt-secondary);line-height:1.85;font-size:17px;}
+.para-light{color:var(--text-mid);line-height:1.85;font-size:17px;}
+
+.container{max-width:var(--max-w);margin:0 auto;padding:0 clamp(16px,4vw,60px);}
+
+/* ─── BUTTONS ─────────────────────────────────────────── */
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+  color:var(--white);padding:13px 28px;border-radius:8px;
+  text-decoration:none;font-weight:700;font-size:12px;
+  letter-spacing:0.8px;text-transform:uppercase;
+  transition:all 0.25s;font-family:var(--mono);border:none;cursor:pointer;
+  box-shadow:0 4px 16px rgba(124,58,237,0.25);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,58,237,0.4);}
+
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1.5px solid rgba(124,58,237,0.4);color:var(--purple-light);
+  padding:12px 28px;border-radius:8px;text-decoration:none;
+  font-weight:700;font-size:12px;letter-spacing:0.8px;
+  text-transform:uppercase;transition:all 0.25s;
+  font-family:var(--mono);background:none;cursor:pointer;
+}
+.btn-secondary:hover{background:rgba(124,58,237,0.07);border-color:var(--purple-light);}
+
+.btn-blue{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--blue-accent);color:var(--white);
+  padding:12px 28px;border-radius:8px;
+  font-weight:700;font-size:12px;letter-spacing:0.8px;
+  text-transform:uppercase;transition:all 0.25s;
+  font-family:var(--mono);border:none;cursor:pointer;
+  box-shadow:0 4px 16px rgba(26,58,176,0.3);
+}
+.btn-blue:hover{transform:translateY(-2px);background:#1445A0;box-shadow:0 8px 28px rgba(26,58,176,0.45);}
+
+/* ─── STATUS INDICATORS ─────────────────────────────── */
+.risk-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 10px;border-radius:20px;
+  font-size:10px;font-weight:700;font-family:var(--mono);letter-spacing:0.5px;
+}
+.risk-green{background:rgba(124,58,237,0.12);color:var(--purple-light);border:1px solid rgba(124,58,237,0.3);}
+.risk-amber{background:rgba(255,186,0,0.12);color:#F5A623;border:1px solid rgba(255,186,0,0.25);}
+.risk-red{background:rgba(239,68,68,0.12);color:#EF4444;border:1px solid rgba(239,68,68,0.25);}
+.risk-blue{background:rgba(123,142,232,0.12);color:var(--blue-soft);border:1px solid rgba(123,142,232,0.25);}
+.risk-dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0;}
+
+/* ─── HERO ──────────────────────────────────────────────── */
+.hero{
+  position:relative;
+  padding:clamp(80px,12vw,120px) 0 clamp(60px,8vw,90px);
+  background:var(--bg-black);overflow:hidden;
+  min-height:calc(100vh - var(--nav-h));
+  display:flex;align-items:center;
+}
+.hero-noise{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+.hero-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(124,58,237,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(124,58,237,0.04) 1px,transparent 1px);
+  background-size:50px 50px;
+  pointer-events:none;z-index:0;
+}
+.hero-glow-1{
+  position:absolute;top:-200px;right:-100px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(124,58,237,0.09) 0%,transparent 65%);
+  pointer-events:none;z-index:0;
+}
+.hero-glow-2{
+  position:absolute;bottom:-150px;left:-100px;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(26,58,176,0.08) 0%,transparent 65%);
+  pointer-events:none;z-index:0;
+}
+.hero-inner{
+  max-width:var(--max-w);margin:0 auto;
+  padding:0 clamp(16px,4vw,60px);
+  display:grid;grid-template-columns:1.15fr 0.85fr;
+  gap:clamp(30px,5vw,80px);align-items:center;
+  position:relative;z-index:1;width:100%;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(124,58,237,0.07);
+  border:1px solid rgba(124,58,237,0.25);
+  color:var(--purple-light);font-size:10px;font-weight:700;
+  letter-spacing:2.5px;padding:6px 14px 6px 10px;
+  border-radius:4px;text-transform:uppercase;
+  margin-bottom:20px;font-family:var(--mono);
+}
+.hero-badge-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--purple-light);
+  animation:pulse-dot 1.6s ease-in-out infinite;flex-shrink:0;
+}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.35;transform:scale(0.55);}}
+
+.hero h1{
+  font-family:var(--display);
+  font-size:clamp(38px,4.5vw,68px);
+  line-height:1.06;font-weight:800;
+  letter-spacing:-1.5px;color:var(--white);
+  margin-bottom:10px;
+}
+.hero h1 .green{color:var(--purple-light);}
+.hero h1 .blue{color:var(--blue-soft);}
+
+.hero-rule{
+  width:64px;height:3px;
+  background:linear-gradient(90deg,var(--purple),rgba(26,58,176,0.6));
+  margin:20px 0 24px;border-radius:2px;
+}
+.hero-body{
+  color:var(--txt-secondary);font-size:clamp(14px,1.5vw,19px);
+  line-height:1.8;margin-bottom:36px;max-width:540px;
+}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+
+/* Score Card */
+.score-card{
+  background:linear-gradient(145deg,rgba(10,15,60,0.95),rgba(4,8,38,0.98));
+  border:1px solid rgba(124,58,237,0.2);border-radius:18px;
+  padding:32px;position:relative;overflow:hidden;
+  box-shadow:0 24px 70px rgba(0,0,0,0.55),0 0 0 1px rgba(124,58,237,0.05);
+}
+.score-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--purple),var(--blue-accent),transparent);
+}
+.score-card-label{
+  font-family:var(--mono);color:var(--purple-light);
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;
+  display:flex;align-items:center;gap:8px;
+}
+.score-card-label::after{content:'';flex:1;height:1px;background:rgba(124,58,237,0.15);}
+.score-row{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.04);
+}
+.score-row:last-child{border-bottom:none;padding-bottom:0;}
+.score-icon{
+  width:30px;height:30px;border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:14px;
+}
+.score-icon.green-bg{background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);}
+.score-icon.blue-bg{background:rgba(26,58,176,0.1);border:1px solid rgba(26,58,176,0.2);}
+.score-icon.amber-bg{background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.2);}
+.score-lbl{color:var(--txt-secondary);font-size:13px;flex:1;font-weight:500;}
+.score-val{
+  font-family:var(--display);color:var(--white);
+  font-size:17px;font-weight:700;
+  display:flex;align-items:center;gap:8px;
+}
+.score-big{
+  margin-top:20px;padding-top:20px;
+  border-top:1px solid rgba(124,58,237,0.12);
+  display:flex;align-items:center;gap:18px;
+}
+.score-big-num{
+  font-family:var(--display);font-size:48px;font-weight:800;
+  color:var(--purple-light);line-height:1;letter-spacing:-2px;
+}
+.score-big-info .label{color:var(--white);font-weight:700;font-size:15px;margin-bottom:6px;}
+.score-big-info .sub{display:flex;gap:6px;flex-wrap:wrap;}
+
+/* ─── STATS STRIP ─────────────────────────────────────── */
+.stats-strip{
+  background:linear-gradient(135deg,rgba(11,18,71,0.9),rgba(10,15,60,0.95));
+  border-top:1px solid rgba(124,58,237,0.1);
+  border-bottom:1px solid rgba(124,58,237,0.1);
+  padding:clamp(32px,5vw,52px) 0;
+}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(20px,3vw,48px);
+}
+.stat-blk{border-left:2px solid rgba(124,58,237,0.2);padding-left:20px;}
+.stat-blk:first-child{border-left:none;padding-left:0;}
+.stat-num{
+  display:block;font-family:var(--display);
+  font-size:clamp(28px,3.5vw,42px);font-weight:800;
+  color:var(--purple-light);letter-spacing:-1px;line-height:1;
+  margin-bottom:8px;
+}
+.stat-txt{color:var(--txt-secondary);font-size:13px;line-height:1.55;margin-bottom:6px;}
+.stat-source{font-family:var(--mono);font-size:9px;color:var(--txt-dim);letter-spacing:1px;text-transform:uppercase;}
+
+/* ─── SECTION LIGHT (How It Works) ──────────────────────── */
+.section-light{
+  background:var(--light-bg);
+  padding:clamp(60px,8vw,100px) 0;
+}
+.process-intro{
+  max-width:680px;margin:0 auto 48px;text-align:center;
+}
+.process-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(16px,2.5vw,28px);
+}
+.process-card{
+  background:var(--light-card);border-radius:14px;
+  overflow:hidden;border:1px solid var(--light-border);
+  transition:transform 0.25s var(--ease),box-shadow 0.25s;
+}
+.process-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(11,18,71,0.12);}
+.process-card-img{
+  width:100%;height:160px;object-fit:cover;
+  background:linear-gradient(135deg,rgba(11,18,71,0.06),rgba(124,58,237,0.08));
+  display:flex;align-items:center;justify-content:center;
+  font-size:56px;
+}
+.process-card-body{padding:20px;}
+.step-tag{
+  font-family:var(--mono);font-size:9px;font-weight:700;
+  color:var(--blue-accent);letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:8px;
+}
+.process-card h3{font-family:var(--display);color:var(--text-dark);font-size:17px;font-weight:700;margin-bottom:10px;}
+.process-card p{color:var(--text-muted);font-size:13.5px;line-height:1.65;}
+
+/* ─── SECTION DARK (Core Capabilities) ──────────────────── */
+.section-dark{
+  background:var(--bg-dark);
+  padding:clamp(60px,8vw,100px) 0;
+}
+.platform-sub{max-width:720px;margin-bottom:48px;}
+.platform-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(16px,2.5vw,28px);
+}
+.platform-card{
+  background:var(--card-bg);border:1px solid rgba(124,58,237,0.12);
+  border-radius:16px;overflow:hidden;
+  transition:transform 0.25s var(--ease),border-color 0.25s,box-shadow 0.25s;
+}
+.platform-card:hover{transform:translateY(-4px);border-color:rgba(124,58,237,0.28);box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+.platform-card-img{
+  width:100%;height:170px;object-fit:cover;
+  background:linear-gradient(135deg,rgba(11,18,71,0.5),rgba(124,58,237,0.08));
+  display:flex;align-items:center;justify-content:center;
+  font-size:64px;position:relative;overflow:hidden;
+}
+.platform-card-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 50%,var(--bg-card) 100%);
+}
+.platform-card .inner{padding:22px 24px 24px;}
+.element-badge{
+  font-family:var(--mono);font-size:9px;font-weight:700;
+  color:var(--purple-light);letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:10px;padding:3px 8px;
+  background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);
+  border-radius:4px;display:inline-block;
+}
+.platform-card h3{font-family:var(--display);color:var(--white);font-size:18px;font-weight:700;margin-bottom:10px;}
+.platform-card p{color:var(--txt-secondary);font-size:14px;line-height:1.7;}
+.more-text{
+  color:var(--txt-dim);font-size:13px;line-height:1.65;
+  margin-top:14px;max-height:0;overflow:hidden;
+  transition:max-height 0.4s var(--ease);
+}
+.platform-card.open .more-text{max-height:300px;}
+.expand-btn{
+  margin-top:16px;background:none;border:1px solid rgba(124,58,237,0.25);
+  color:var(--purple-light);padding:7px 16px;border-radius:6px;
+  font-size:11px;font-weight:600;cursor:pointer;
+  font-family:var(--mono);letter-spacing:0.5px;
+  transition:all 0.2s;
+}
+.expand-btn:hover{background:rgba(124,58,237,0.08);}
+
+/* ─── ABOUT PAGE ────────────────────────────────────────── */
+.about-hero{
+  padding:clamp(80px,12vw,120px) 0 clamp(60px,8vw,100px);
+  background:var(--bg-black);
+}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(40px,6vw,80px);align-items:start;
+}
+.about-para{
+  color:var(--txt-secondary);font-size:16px;line-height:1.8;margin-bottom:18px;
+}
+.about-tags{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:10px;
+  margin-top:28px;
+}
+.feature-tag{
+  background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.18);
+  color:var(--purple-light);font-size:12px;font-weight:600;
+  padding:9px 14px;border-radius:7px;font-family:var(--mono);
+  letter-spacing:0.3px;
+}
+.founder-card{
+  background:var(--card-bg);border:1px solid rgba(124,58,237,0.15);
+  border-radius:16px;padding:28px;margin-bottom:20px;
+  position:relative;overflow:hidden;
+}
+.founder-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--purple),transparent);
+}
+.founder-tag{
+  font-family:var(--mono);font-size:9px;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--purple-light);margin-bottom:10px;
+}
+.founder-card h4{font-family:var(--display);color:var(--white);font-size:20px;font-weight:700;margin-bottom:4px;}
+.founder-title{color:var(--txt-secondary);font-size:13px;margin-bottom:14px;font-weight:500;}
+.founder-card p{color:var(--txt-dim);font-size:14px;line-height:1.7;margin-bottom:12px;}
+.founder-card p:last-child{margin-bottom:0;}
+
+/* ─── PLATFORM PAGE ─────────────────────────────────────── */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,20px);margin-bottom:40px;}
+.kpi-card{
+  background:var(--card-bg);border:1px solid rgba(124,58,237,0.12);
+  border-radius:12px;padding:20px 18px;text-align:center;
+  transition:border-color 0.25s;
+}
+.kpi-card:hover{border-color:rgba(124,58,237,0.28);}
+.kpi-num{font-family:var(--display);font-size:clamp(26px,3vw,38px);font-weight:800;color:var(--purple-light);letter-spacing:-1px;margin-bottom:6px;}
+.kpi-lbl{color:var(--txt-secondary);font-size:12px;font-family:var(--mono);letter-spacing:0.5px;}
+
+/* ─── MARKET PAGE ────────────────────────────────────────── */
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.5vw,28px);margin-bottom:28px;}
+.chart-card{
+  background:var(--card-bg);border:1px solid rgba(124,58,237,0.1);
+  border-radius:14px;padding:22px;
+}
+.chart-card-full{
+  background:var(--card-bg);border:1px solid rgba(124,58,237,0.1);
+  border-radius:14px;padding:22px;margin-bottom:28px;
+}
+.chart-title{font-family:var(--display);color:var(--white);font-size:16px;font-weight:700;margin-bottom:4px;}
+.chart-sub{color:var(--txt-dim);font-size:12px;font-family:var(--mono);margin-bottom:16px;}
+.chart-wrap{height:240px;position:relative;}
+.chart-wrap-lg{height:360px;position:relative;}
+
+.market-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,24px);margin-bottom:36px;}
+.mkt-card{
+  background:linear-gradient(145deg,var(--card-bg),rgba(11,18,71,0.5));
+  border:1px solid rgba(26,58,176,0.2);border-radius:12px;padding:20px;
+}
+.mkt-num{font-family:var(--display);font-size:clamp(28px,3vw,40px);font-weight:800;color:var(--blue-soft);letter-spacing:-1px;margin-bottom:6px;}
+.mkt-lbl{color:var(--txt-secondary);font-size:13px;line-height:1.5;}
+.mkt-source{font-family:var(--mono);font-size:9px;color:var(--txt-dim);letter-spacing:1px;text-transform:uppercase;margin-top:8px;}
+
+/* ─── PRICING PAGE ───────────────────────────────────────── */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,28px);margin-bottom:56px;}
+.price-card{
+  background:var(--card-bg);border:1px solid rgba(124,58,237,0.12);
+  border-radius:16px;padding:30px;position:relative;
+  transition:transform 0.25s,border-color 0.25s,box-shadow 0.25s;
+}
+.price-card:hover{transform:translateY(-4px);border-color:rgba(124,58,237,0.25);box-shadow:0 16px 48px rgba(0,0,0,0.3);}
+.price-card.featured{
+  border-color:var(--purple);
+  box-shadow:0 0 0 1px rgba(124,58,237,0.15),0 24px 60px rgba(0,0,0,0.35);
+  background:linear-gradient(145deg,rgba(10,15,60,0.97),rgba(11,18,71,0.95));
+}
+.price-card.featured::before{
+  content:'MOST POPULAR';position:absolute;top:-1px;left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+  color:var(--white);font-size:9px;font-weight:700;
+  font-family:var(--mono);letter-spacing:2px;
+  padding:4px 16px;border-radius:0 0 8px 8px;
+}
+.price-tier{font-family:var(--mono);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--purple-light);margin-bottom:8px;}
+.price-card h3{font-family:var(--display);color:var(--white);font-size:22px;font-weight:800;margin-bottom:10px;}
+.price-card .desc{color:var(--txt-secondary);font-size:13px;line-height:1.6;margin-bottom:20px;}
+.price-amount{font-family:var(--display);font-size:clamp(36px,4vw,52px);font-weight:800;color:var(--white);letter-spacing:-2px;}
+.price-period{font-family:var(--mono);font-size:10px;color:var(--txt-dim);letter-spacing:1px;margin-bottom:24px;margin-top:4px;}
+.price-divider{height:1px;background:rgba(124,58,237,0.1);margin-bottom:22px;}
+.price-features{list-style:none;margin-bottom:28px;}
+.price-features li{
+  color:var(--txt-secondary);font-size:13.5px;padding:7px 0;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  display:flex;align-items:center;gap:10px;
+}
+.price-features li:last-child{border-bottom:none;}
+.chk{color:var(--purple-light);font-weight:700;flex-shrink:0;}
+.price-btn{
+  width:100%;padding:13px;border-radius:8px;
+  font-family:var(--mono);font-size:12px;font-weight:700;
+  letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;transition:all 0.25s;border:none;
+}
+.price-btn-outline{
+  background:none;border:1.5px solid rgba(124,58,237,0.35);color:var(--purple-light);
+}
+.price-btn-outline:hover{background:rgba(124,58,237,0.07);}
+.price-btn-green{
+  background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+  color:var(--white);box-shadow:0 4px 16px rgba(124,58,237,0.3);
+}
+.price-btn-green:hover{box-shadow:0 8px 28px rgba(124,58,237,0.45);transform:translateY(-1px);}
+
+/* ─── FAQ ────────────────────────────────────────────────── */
+.faq-wrap{margin-bottom:48px;}
+.faq-item{
+  border-bottom:1px solid rgba(124,58,237,0.08);
+  padding:20px 0;
+}
+.faq-q{
+  display:flex;justify-content:space-between;align-items:center;
+  cursor:pointer;gap:20px;
+}
+.faq-q h4{font-family:var(--display);color:var(--white);font-size:16px;font-weight:600;}
+.faq-icon{
+  color:var(--purple-light);font-size:22px;font-weight:300;
+  flex-shrink:0;transition:transform 0.25s;
+}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-body{
+  color:var(--txt-secondary);font-size:14.5px;line-height:1.75;
+  max-height:0;overflow:hidden;
+  transition:max-height 0.35s var(--ease),padding 0.35s;
+}
+.faq-item.open .faq-body{max-height:300px;padding-top:14px;}
+
+/* ─── CONTACT ────────────────────────────────────────────── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;}
+.contact-left-para{color:var(--txt-secondary);font-size:15px;line-height:1.75;margin-bottom:16px;}
+.contact-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
+.contact-icon{
+  width:40px;height:40px;background:rgba(124,58,237,0.08);
+  border:1px solid rgba(124,58,237,0.2);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.contact-item-text strong{display:block;color:var(--white);font-size:13px;margin-bottom:2px;}
+.contact-item-text span{color:var(--txt-secondary);font-size:13px;}
+.contact-form-card{
+  background:var(--card-bg);border:1px solid rgba(124,58,237,0.15);
+  border-radius:16px;padding:36px;position:relative;overflow:hidden;
+}
+.contact-form-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--purple),var(--blue-accent),transparent);
+}
+.contact-form-card h3{font-family:var(--display);color:var(--white);font-size:22px;font-weight:800;margin-bottom:24px;}
+.form-group{margin-bottom:18px;}
+.form-label{display:block;font-family:var(--mono);font-size:10px;font-weight:700;color:var(--txt-dim);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+.form-ctrl{
+  width:100%;background:rgba(255,255,255,0.04);
+  border:1px solid rgba(124,58,237,0.2);border-radius:8px;
+  padding:12px 16px;color:var(--white);font-size:14px;
+  font-family:var(--font);transition:all 0.25s;outline:none;
+}
+.form-ctrl::placeholder{color:var(--txt-dim);}
+.form-ctrl:focus{border-color:rgba(124,58,237,0.5);background:rgba(124,58,237,0.03);}
+.form-ctrl option{background:var(--bg-card);}
+.ta{resize:vertical;min-height:90px;}
+.form-submit{
+  width:100%;background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+  color:var(--white);border:none;padding:14px;border-radius:8px;
+  font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;cursor:pointer;transition:all 0.25s;
+}
+.form-submit:hover{box-shadow:0 6px 20px rgba(124,58,237,0.35);transform:translateY(-1px);}
+
+/* ─── FOOTER ───────────────────────────────────────────── */
+footer{background:var(--bg-black);border-top:1px solid rgba(124,58,237,0.1);padding:clamp(40px,6vw,80px) 0 28px;}
+.footer-inner{max-width:var(--max-w);margin:0 auto;padding:0 clamp(16px,4vw,60px);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:clamp(30px,5vw,80px);margin-bottom:40px;}
+.footer-logo{font-family:var(--display);color:var(--purple-light);font-size:22px;font-weight:800;display:block;margin-bottom:14px;}
+.footer-brand p{color:var(--txt-dim);font-size:13px;line-height:1.75;}
+.footer-col h5{font-family:var(--mono);color:var(--white);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px;}
+.footer-col a{display:block;color:var(--txt-dim);font-size:13px;margin-bottom:10px;cursor:pointer;transition:color 0.2s;}
+.footer-col a:hover{color:var(--purple-light);}
+.footer-bottom{border-top:1px solid rgba(124,58,237,0.08);padding-top:20px;display:flex;flex-direction:column;gap:4px;}
+.footer-bottom p{color:var(--txt-dim);font-size:12px;font-family:var(--mono);}
+.footer-bottom span{color:var(--purple-light);}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media(min-width:1400px){
+  :root{--max-w:1300px;}
+  .hero h1{font-size:72px;}
+  .hero-body{font-size:20px;max-width:580px;}
+  .section-h2{font-size:54px;}
+  .para-dark,.para-light{font-size:18px;}
+  .stat-num{font-size:46px;}
+  .chart-wrap{height:300px;}
+  .chart-wrap-lg{height:420px;}
+  .score-big-num{font-size:52px;}
+}
+@media(max-width:900px){
+  .platform-grid{grid-template-columns:repeat(2,1fr);}
+  .pricing-grid{grid-template-columns:1fr 1fr;}
+  .kpi-row{grid-template-columns:repeat(2,1fr);}
+  .market-kpi{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .nav-links,.nav-right .btn-demo-nav{display:none;}
+  .hamburger{display:flex;}
+  .nav-right{gap:0;}
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-inner>div:last-child{display:none;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .process-grid{grid-template-columns:repeat(2,1fr);}
+  .platform-grid{grid-template-columns:1fr;}
+  .about-grid{grid-template-columns:1fr;}
+  .kpi-row{grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:28px;}
+  .kpi-card{padding:16px 12px;}
+  .charts-grid{grid-template-columns:1fr;gap:16px;margin-bottom:16px;}
+  .chart-card{padding:16px;}
+  .chart-card-full{padding:16px;margin-bottom:16px;}
+  .chart-wrap{height:200px;}
+  .chart-wrap-lg{height:260px;}
+  .pricing-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .market-kpi{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .process-grid{grid-template-columns:1fr;}
+  .kpi-row{grid-template-columns:1fr;}
+  .about-tags{grid-template-columns:1fr;}
+  .chart-wrap{height:180px;}
+  .chart-wrap-lg{height:220px;}
+  .chart-title{font-size:14px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav class="navbar">
+  <a class="nav-logo" href="#" onclick="showPage('home');return false;">
+
+    <div class="nav-logo-text">
+      Creative Launch OS
+      <span>AI Business Operating System</span>
+    </div>
+
+  </a>
+
+  <ul class="nav-links">
+    <li><button id="nav-home" class="active" onclick="showPage('home')">Home</button></li>
+    <li><button id="nav-about" onclick="showPage('about')">About</button></li>
+    <li><button id="nav-platform" onclick="showPage('platform')">Platform</button></li>
+    <li><button id="nav-market" onclick="showPage('market')">Market</button></li>
+    <li><button id="nav-pricing" onclick="showPage('pricing')">Pricing</button></li>
+    <li><button id="nav-contact" onclick="showPage('contact')">Contact</button></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="btn-demo-nav" onclick="showPage('contact')">
+      Book a Demo
+    </button>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <button onclick="showPage('home');closeMobile()">Home</button>
+  <button onclick="showPage('about');closeMobile()">About</button>
+  <button onclick="showPage('platform');closeMobile()">Platform</button>
+  <button onclick="showPage('market');closeMobile()">Market</button>
+  <button onclick="showPage('pricing');closeMobile()">Pricing</button>
+  <button onclick="showPage('contact');closeMobile()">Contact</button>
+  <button class="mob-cta" onclick="showPage('contact');closeMobile()">Book a Demo →</button>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-noise"></div>
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          UK's First AI Business Operating System for Creators
+        </div>
+        <h1>Launch. <span class="green">Create.</span><br><span class="blue">Scale.</span></h1>
+        <div class="hero-rule"></div>
+        <p class="hero-body">Creative Launch OS transforms individual creative portfolios into fully operational commercial businesses automating lead triage, client qualification, HMRC MTD compliance, and micro-studio scaling through proprietary Style Graphing AI and agentic workflow orchestration.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="showPage('contact')">Book a Demo →</button>
+          <button class="btn-secondary" onclick="showPage('platform')">Explore Platform</button>
+        </div>
+      </div>
+      <div>
+        <div class="score-card">
+          <div class="score-card-label">Live Creator Business Monitor</div>
+          <div class="score-row">
+            <div class="score-icon green-bg">🎨</div>
+            <span class="score-lbl">Style Fidelity Score</span>
+            <span class="score-val">94%</span>
+          </div>
+          <div class="score-row">
+            <div class="score-icon blue-bg">⚡</div>
+            <span class="score-lbl">Lead Qualification Accuracy</span>
+            <span class="score-val">94/100</span>
+          </div>
+          <div class="score-row">
+            <div class="score-icon amber-bg">⏱️</div>
+            <span class="score-lbl">Admin Time Reclaimed Daily</span>
+            <span class="score-val">4+ hrs <span class="risk-badge risk-amber"><span class="risk-dot"></span>Auto</span></span>
+          </div>
+          <div class="score-row">
+            <div class="score-icon green-bg">🛡️</div>
+            <span class="score-lbl">HMRC MTD Compliance</span>
+            <span class="score-val"><span class="risk-badge risk-green"><span class="risk-dot"></span>Compliant</span></span>
+          </div>
+          <div class="score-row">
+            <div class="score-icon blue-bg">🚀</div>
+            <span class="score-lbl">AI Triage Response Latency</span>
+            <span class="score-val">&lt; 300ms</span>
+          </div>
+          <div class="score-big">
+            <div class="score-big-num">9.4</div>
+            <div class="score-big-info">
+              <div class="label">Business Readiness Score</div>
+              <div class="sub"><span class="risk-badge risk-green"><span class="risk-dot"></span>Launch Ready · Style Protected</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-blk">
+          <span class="stat-num">£126bn</span>
+          <div class="stat-txt">UK creative sector annual contribution growing at twice the wider economy rate</div>
+          <span class="stat-source">DCMS Creative Industries 2025</span>
+        </div>
+        <div class="stat-blk">
+          <span class="stat-num">500K+</span>
+          <div class="stat-txt">Active UK creative freelancers facing the 2026 HMRC MTD mandate for digital tax</div>
+          <span class="stat-source">HMRC Making Tax Digital 2026</span>
+        </div>
+        <div class="stat-blk">
+          <span class="stat-num">73%</span>
+          <div class="stat-txt">UK creators report burnout from admin tasks spending 4+ hours daily on non-creative work</div>
+          <span class="stat-source">Creator Economy Report 2025</span>
+        </div>
+        <div class="stat-blk">
+          <span class="stat-num">£29</span>
+          <div class="stat-txt">Entry SaaS price per month full AI Front Desk and business formation tools</div>
+          <span class="stat-source">Creative Launch OS Solo Tier</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section-light">
+    <div class="container">
+      <div class="process-intro">
+        <div class="label-tag-blue">How It Works</div>
+        <h2 class="section-h2 dark">From Creative Portfolio to Fully Operational Business in Days</h2>
+        <div class="section-divider divider-blue"></div>
+        <p class="para-light">Every Creative Launch OS deployment follows a proven four-stage business progression from portfolio analysis and style mapping, to AI-powered lead triage, business formation, and micro-studio scaling all without requiring operational or compliance expertise from the creator.</p>
+      </div>
+      <div class="process-grid">
+  <div class="process-card">
+    <div class="process-card-img">
+      <img src="c1.jpg" alt="Upload Portfolio">
+    </div>
+    <div class="process-card-body">
+      <div class="step-tag">STEP 01</div>
+      <h3>Upload Portfolio</h3>
+      <p>Upload your creative portfolio images, videos, written work, or technical assets. The Style Graphing engine analyses your unique aesthetic markers and maps them to commercial service tiers.</p>
+    </div>
+  </div>
+
+  <div class="process-card">
+    <div class="process-card-img">
+      <img src="c2.jpg" alt="AI Front Desk">
+    </div>
+    <div class="process-card-body">
+      <div class="step-tag">STEP 02</div>
+      <h3>AI Front Desk Live</h3>
+      <p>Your style-bound AI Front Desk goes live trained on your actual work, it handles client triage, qualifies leads, standardises briefs, and maintains your brand voice 24/7.</p>
+    </div>
+  </div>
+
+  <div class="process-card">
+    <div class="process-card-img">
+      <img src="c3.jpg" alt="Business Formation">
+    </div>
+    <div class="process-card-body">
+      <div class="step-tag">STEP 03</div>
+      <h3>Business Formation</h3>
+      <p>Automated SOP extraction, HMRC MTD-compliant invoicing, IR35-ready contracts, and GDPR-compliant data management launch your creator business with full regulatory compliance.</p>
+    </div>
+  </div>
+
+  <div class="process-card">
+    <div class="process-card-img">
+      <img src="c4.jpg" alt="Scale to Micro-Studio">
+    </div>
+    <div class="process-card-body">
+      <div class="step-tag">STEP 04</div>
+      <h3>Scale to Micro-Studio</h3>
+      <p>Seamlessly transition from solo-operator to micro-studio onboard contractors, manage distributed teams, automate profit-sharing, and grow your creative business infrastructure.</p>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </section>
+
+
+
+</div><!-- end page home -->
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: ABOUT
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-about">
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <div class="label-tag">Our Mission</div>
+          <h2 class="section-h2 green">Creative Professionalization Built from Real-World Operational Experience</h2>
+          <div class="section-divider divider-green"></div>
+          <p class="about-para">Creative Launch OS was born from identifying the "Growth Ceiling" faced by high-talent creatives who lack operational infrastructure. While the barrier to entry for content creation has vanished due to AI, the barrier to building a sustainable, scalable business has never been higher.</p>
+          <p class="about-para">Our platform transforms creative talent from a hobbyist "gig" into a repeatable, automated business experience empowering creators to own their client relationships, protect their unique style, and scale from solo-operator to micro-studio founder with full UK regulatory compliance built in from day one.</p>
+          <p class="about-para">Founded by Gurpreet Bains (University of Essex) and Shivam Taneja combining MBA-level business operations expertise with deep AI engineering capability Creative Launch OS is domain expertise encoded into a commercially scalable agentic operating system, built specifically for the UK's 500,000+ creative professionals.</p>
+          <div class="about-tags">
+            <div class="feature-tag">Multimodal Style Graphing AI</div>
+            <div class="feature-tag">Portfolio-Grounded Triage</div>
+            <div class="feature-tag">HMRC MTD Digital Bridge</div>
+            <div class="feature-tag">Automated SOP Extraction</div>
+            <div class="feature-tag">Micro-Studio Collaboration</div>
+            <div class="feature-tag">Human-Verified Trust System</div>
+            <div class="feature-tag">UK GDPR · Data Sovereignty</div>
+            <div class="feature-tag">Creator-Owned Data Model</div>
+          </div>
+        </div>
+        <div>
+          <div class="founder-card">
+            <div class="founder-tag">Founder &amp; CEO</div>
+            <h4>Gurpreet Bains</h4>
+            <div class="founder-title">International MBA · Business Operations &amp; Compliance Architect</div>
+            <p>Gurpreet holds an International MBA from Buckinghamshire New University and brings over 5 years of experience in business operations, client relationship management, and financial compliance. With a background in banking (Barclays) and a lifelong passion for creative expression, Gurpreet leads the strategic vision for Creative Launch OS.</p>
+            <p>Key responsibilities include product vision and roadmap leadership, business formation strategy, market development with UK creative universities and incubators, and HMRC MTD compliance oversight ensuring the platform solves real "Front-Line Ops" bottlenecks for UK creators.</p>
+            <button class="btn-primary" onclick="showPage('contact')">Contact Founders →</button>
+          </div>
+
+          <div class="founder-card">
+            <div class="founder-tag">Co-Founder &amp; CTO</div>
+            <h4>Shivam Taneja</h4>
+            <div class="founder-title">Senior Security Analyst · AI Systems Engineer</div>
+            <p>Shivam is a senior Security Analyst and AI systems engineer with deep expertise in cybersecurity, cloud computing (AWS, Azure, GCP), and technical risk assessment. His experience managing sensitive data environments ensures Creative Launch OS is technically robust, secure, and capable of high-performance agentic orchestration.</p>
+            <p>Key technical contributions include the proprietary Style Graphing architecture, agentic RAG-based triage engine, zero-trust security infrastructure, encrypted creator data moats, and high-compute GPU clusters powering the real-time business automation layer.</p>
+            <button class="btn-primary" onclick="showPage('market')">View Market →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- end page about -->
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: PLATFORM
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-platform">
+  <section class="section-dark" style="padding-top:clamp(80px,12vw,120px);">
+    <div class="container">
+      <div class="label-tag">The Platform</div>
+      <h2 class="section-h2 white">Every Layer of Creative Launch OS's Agentic Intelligence</h2>
+      <div class="section-divider divider-green"></div>
+      <p class="para-dark platform-sub">Creative Launch OS is a cloud-native AI SaaS platform built on a modular architecture React.js creator dashboards, FastAPI agentic workflow backend, proprietary Style Graph data model, PyTorch + Hugging Face transformer engines, and UK GDPR-compliant cloud infrastructure on AWS/GCP designed to serve creators, micro-studios, and creative universities without requiring technical expertise on-site.</p>
+
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-num">94%</div>
+          <div class="kpi-lbl">Lead qualification accuracy vs manual</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">65%</div>
+          <div class="kpi-lbl">Admin overhead reduction</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">88%</div>
+          <div class="kpi-lbl">Brand voice fidelity in client tests</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num">TRL-7</div>
+          <div class="kpi-lbl">Prototype operational in live environments</div>
+        </div>
+      </div>
+
+     <div class="platform-grid">
+
+  <div class="platform-card">
+    <div class="platform-card-img">
+      <img src="cc5.jpg" alt="Multimodal Style Graphing Engine">
+    </div>
+    <div class="inner">
+      <div class="element-badge">Module 01</div>
+      <h3>Multimodal Style Graphing Engine</h3>
+      <p>Upload creative portfolios (images, video, text, motion) via drag-and-drop. The Style Graphing engine uses transformer-based deep learning to map aesthetic markers to commercial service tiers generating a defensible "Style Moat."</p>
+      <div class="more-text">Proprietary multimodal feature extraction across visual, written, and motion creative outputs. Generates Evidence of Uniqueness reports for corporate client verification. Maps style to commercial pricing bands preventing race-to-the-bottom pricing caused by AI-generated generic content flooding the market.</div>
+      <button class="expand-btn" onclick="toggleCard(this)">Expand ↓</button>
+    </div>
+  </div>
+
+  <div class="platform-card">
+    <div class="platform-card-img">
+      <img src="cc6.jpg" alt="Portfolio Grounded AI Front Desk">
+    </div>
+    <div class="inner">
+      <div class="element-badge">Module 02</div>
+      <h3>Portfolio-Grounded AI Front Desk</h3>
+      <p>Style-bound conversational AI trained specifically on the creator's actual portfolio, service history, and brand voice. Handles real-time lead qualification, brief standardisation, and enquiry triage with 94% accuracy at sub-300ms latency.</p>
+      <div class="more-text">RAG (Retrieval-Augmented Generation) pipeline optimised for creative professionalization. Prevents style drift ensuring all automated client interactions are brand-authentic. Continuously refined by successful bookings, improving qualification accuracy over time. 88% of clients in pilot testing could not distinguish the AI Front Desk from the creator's own voice.</div>
+      <button class="expand-btn" onclick="toggleCard(this)">Expand ↓</button>
+    </div>
+  </div>
+
+  <div class="platform-card">
+    <div class="platform-card-img">
+      <img src="cc7.jpg" alt="Automated SOP Extraction Engine">
+    </div>
+    <div class="inner">
+      <div class="element-badge">Module 03</div>
+      <h3>Automated SOP Extraction Engine</h3>
+      <p>Logic engine that extracts Standard Operating Procedures from a creator's past project history converting the "chaos of creation" into repeatable, automated business workflows that solve the fragility of solo-operator models.</p>
+      <div class="more-text">Automatically generates onboarding workflows, invoicing sequences, project delivery milestones, and collaboration agreements from historical creator data. Reduces administrative friction by up to 65%. Enables seamless transition from solo-operator to micro-studio model with pre-built operational frameworks no manual configuration needed.</div>
+      <button class="expand-btn" onclick="toggleCard(this)">Expand ↓</button>
+    </div>
+  </div>
+
+  <div class="platform-card">
+    <div class="platform-card-img">
+      <img src="cc8.jpg" alt="HMRC MTD Digital Bridge">
+    </div>
+    <div class="inner">
+      <div class="element-badge">Module 04</div>
+      <h3>HMRC MTD Digital Bridge</h3>
+      <p>Fully integrated financial layer aligned with UK's Making Tax Digital mandate the only creator OS providing automated HMRC MTD-compliant record-keeping, VAT reporting, and digital link integrity for UK creative sole traders.</p>
+      <div class="more-text">Covers financial record-keeping, VAT/Income Tax reporting, and digital link integrity for automated invoicing. Completed Financial Data Impact Assessment (FDIA) for automated invoicing. Includes MTD-compliant digital bridge documentation for creator micro-studios. IR35 readiness templates for enterprise brand collaborations. Provides a "Business-Ready" stamp for corporate client onboarding.</div>
+      <button class="expand-btn" onclick="toggleCard(this)">Expand ↓</button>
+    </div>
+  </div>
+
+  <div class="platform-card">
+    <div class="platform-card-img">
+      <img src="cc9.jpg" alt="Micro Studio Collaboration Layer">
+    </div>
+    <div class="inner">
+      <div class="element-badge">Module 05</div>
+      <h3>Micro-Studio Collaboration Layer</h3>
+      <p>AI-assisted transition from solo-work to team-based execution matching creators with vetted specialists, coordinating distributed project milestones, and managing automated profit-sharing across micro-studio teams.</p>
+      <div class="more-text">Reduces collaboration coordination overhead by up to 40%. Supports teams of up to 10 contractors within a single OS environment. Includes legal collaboration templates, automated milestone tracking, and integrated profit-sharing models. Enables complex multi-modal projects previously impossible for solo operators the definitive path from individual creator to micro-studio employer.</div>
+      <button class="expand-btn" onclick="toggleCard(this)">Expand ↓</button>
+    </div>
+  </div>
+
+  <div class="platform-card">
+    <div class="platform-card-img">
+      <img src="cc10.jpg" alt="Human Verified Trust System">
+    </div>
+    <div class="inner">
+      <div class="element-badge">Module 06</div>
+      <h3>Human-Verified Trust System</h3>
+      <p>Manual verification layer for high-stakes negotiations validating creator credibility and operational readiness, triggering hybrid human-in-the-loop oversight for complex brand contracts and high-ticket client deals.</p>
+      <div class="more-text">When the AI encounters high-stakes negotiations or ambiguous client requests, it triggers a hybrid verification loop allowing the creator or professional advisor to step in. Maintains the high-touch authenticity required in the creative industry. Provides a "Business-Ready" certification stamp for corporate clients requiring verified professional standards. 99.9% accuracy in automated contract generation through the Human-in-the-Loop QA framework.</div>
+      <button class="expand-btn" onclick="toggleCard(this)">Expand ↓</button>
+    </div>
+  </div>
+
+</div>
+      </div>
+    </div>
+  </section>
+</div><!-- end page platform -->
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: MARKET
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-market">
+  <section class="section-dark" style="padding-top:clamp(80px,12vw,120px);">
+    <div class="container">
+      <div class="label-tag">Market Analysis</div>
+      <h2 class="section-h2 white">A £381M UK Opportunity. 500K Creators. Zero Direct Competition.</h2>
+      <div class="section-divider divider-green"></div>
+      <p class="para-dark" style="max-width:700px;margin-bottom:40px;">The UK presents a structurally compelling market opportunity for Creative Launch OS. With 500,000 active creative freelancers facing the 2026 HMRC MTD mandate, 45,000 micro-studios requiring collaboration infrastructure, and a £126bn creative economy growing at twice the wider economy rate the demand for a style-aware, compliance-ready business operating system is urgent and completely underserved.</p>
+
+      <div class="market-kpi">
+        <div class="mkt-card">
+          <div class="mkt-num">£381M</div>
+          <div class="mkt-lbl">Total Addressable Market across individual creatives, agencies, universities, enterprise brands, and creative platforms in the UK</div>
+          <div class="mkt-source">Creative Launch OS Market Analysis 2026</div>
+        </div>
+        <div class="mkt-card">
+          <div class="mkt-num">500K+</div>
+          <div class="mkt-lbl">UK creative freelancers legally required to adopt digital tax reporting under HMRC's Making Tax Digital 2026 mandate</div>
+          <div class="mkt-source">HMRC Making Tax Digital 2026</div>
+        </div>
+        <div class="mkt-card">
+          <div class="mkt-num">£1M ARR</div>
+          <div class="mkt-lbl">Revenue target requiring only 633 active paying creators at an ARPC of £1,579/year achievable within 3 years</div>
+          <div class="mkt-source">Creative Launch OS Financial Model</div>
+        </div>
+      </div>
+
+      <div class="charts-grid">
+        <div class="chart-card">
+          <div class="chart-title">UK Creator Market by Sector TAM Breakdown</div>
+          <div class="chart-sub">Total Addressable Market per segment (£ Million annually)</div>
+          <div class="chart-wrap"><canvas id="chartSector"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Creator Admin Burden Key Pain Points</div>
+          <div class="chart-sub">Primary operational challenges reported by UK creative professionals</div>
+          <div class="chart-wrap"><canvas id="chartRootCause"></canvas></div>
+        </div>
+      </div>
+
+      <div class="chart-card-full">
+        <div class="chart-title">Competitive Positioning Creative Tech Landscape</div>
+        <div class="chart-sub">Creative Launch OS vs existing platforms across key capability dimensions</div>
+        <div class="chart-wrap-lg"><canvas id="chartRadar"></canvas></div>
+      </div>
+
+      <div class="charts-grid">
+        <div class="chart-card">
+          <div class="chart-title">Revenue Growth Projection 5-Year Forecast</div>
+          <div class="chart-sub">Creative Launch OS annual revenue trajectory (£)</div>
+          <div class="chart-wrap"><canvas id="chartGrowth"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Creative Launch OS vs Competitors Capability Score</div>
+          <div class="chart-sub">Feature coverage comparison across creator business dimensions</div>
+          <div class="chart-wrap"><canvas id="chartPerf"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- end page market -->
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: PRICING
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-pricing">
+  <section style="background:var(--bg-black);padding:clamp(80px,12vw,120px) 0 clamp(60px,8vw,100px);">
+    <div class="container">
+      <div class="label-tag">Pricing Plans</div>
+      <h2 class="section-h2 green">Professional Creator Business Infrastructure at Every Stage</h2>
+      <div class="section-divider divider-green"></div>
+      <p class="para-dark" style="max-width:640px;margin-bottom:48px;">Three subscription tiers designed to grow with your creative business maturity from emerging freelancer to micro-studio founder. All plans include the full Creative Launch OS AI engine, Style Graphing, and business formation tools. No technical expertise required. No expensive business managers needed.</p>
+
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-tier">Solo Creator Tier</div>
+          <h3>Portfolio</h3>
+          <p class="desc">For emerging freelancers and individual creative practitioners transitioning from hobbyist to full-time professional.</p>
+          <span class="price-amount">£29</span>
+          <div class="price-period">/ MONTH · BILLED MONTHLY</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li><span class="chk">✓</span> AI Front Desk portfolio-grounded lead triage</li>
+            <li><span class="chk">✓</span> Basic Style Graphing engine</li>
+            <li><span class="chk">✓</span> Creative brief standardisation</li>
+            <li><span class="chk">✓</span> Basic business formation templates</li>
+            <li><span class="chk">✓</span> HMRC MTD-ready invoicing</li>
+            <li><span class="chk">✓</span> Owned commerce storefront</li>
+            <li><span class="chk">✓</span> Solo creator workspace</li>
+          </ul>
+          <button class="price-btn price-btn-outline" onclick="showPage('contact')">Get Started</button>
+        </div>
+
+        <div class="price-card featured">
+          <div class="price-tier">Professional Creator Tier</div>
+          <h3>Professional</h3>
+          <p class="desc">For established creatives with regular client work requiring full style protection, SOP automation, and HMRC MTD compliance.</p>
+          <span class="price-amount">£79</span>
+          <div class="price-period">/ MONTH · BILLED MONTHLY</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li><span class="chk">✓</span> Advanced Style Graphing &amp; Value Mapping</li>
+            <li><span class="chk">✓</span> Automated SOP generation</li>
+            <li><span class="chk">✓</span> Full HMRC MTD digital bridge</li>
+            <li><span class="chk">✓</span> Priority lead qualification</li>
+            <li><span class="chk">✓</span> IR35-ready contract templates</li>
+            <li><span class="chk">✓</span> Business-Ready certification</li>
+            <li><span class="chk">✓</span> Style Moat protection reports</li>
+          </ul>
+          <button class="price-btn price-btn-green" onclick="showPage('contact')">Start Free Pilot</button>
+        </div>
+
+        <div class="price-card">
+          <div class="price-tier">Studio Tier</div>
+          <h3>Studio</h3>
+          <p class="desc">For boutique creative agencies and micro-studio founders managing distributed teams of specialists and contractors.</p>
+          <span class="price-amount">£199</span>
+          <div class="price-period">/ MONTH · CUSTOM PRICING</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li><span class="chk">✓</span> Full Micro-Studio collaboration modules</li>
+            <li><span class="chk">✓</span> Team milestone tracking</li>
+            <li><span class="chk">✓</span> Advanced white-label storefronts</li>
+            <li><span class="chk">✓</span> Automated profit-sharing engine</li>
+            <li><span class="chk">✓</span> Human-Verified Trust certification</li>
+            <li><span class="chk">✓</span> 24/7 technical support</li>
+            <li><span class="chk">✓</span> Unlimited studio workspace</li>
+          </ul>
+          <button class="price-btn price-btn-outline" onclick="showPage('contact')">Contact Sales</button>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="label-tag">FAQ</div>
+      <h3 style="font-family:var(--display);color:var(--purple-light);font-size:clamp(22px,3vw,30px);font-weight:800;margin-bottom:28px;letter-spacing:-0.3px;">Common Questions</h3>
+      <div class="faq-wrap">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFAQ(this)">
+            <h4>Do I need technical or business expertise to use Creative Launch OS?</h4>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-body">No. Creative Launch OS is specifically designed for creative professionals without operational or technical backgrounds. The platform's AI-driven onboarding including automated portfolio analysis, style mapping, and SOP extraction requires no manual configuration. Simply upload your creative work and the system builds your business infrastructure automatically, handling HMRC compliance, lead triage, and client qualification on your behalf.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFAQ(this)">
+            <h4>How is Creative Launch OS different from HoneyBook, Behance, or Contra?</h4>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-body">Existing tools serve different functions: HoneyBook is a generic CRM requiring manual setup; Behance is a passive portfolio display platform; Contra is a marketplace for gig work. Creative Launch OS is the first platform that combines all three as a unified "Business Operating System" using your actual portfolio to train a style-bound AI that automates triage, qualification, and compliance. We are the infrastructure layer behind all other tools, not a replacement for any single one.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFAQ(this)">
+            <h4>What does HMRC MTD compliance mean for my creative business?</h4>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-body">From 2026, HMRC requires all UK sole traders and small businesses including creative freelancers to maintain digital records and file tax returns digitally through Making Tax Digital (MTD) compatible software. Creative Launch OS is built with a fully integrated HMRC MTD digital bridge, ensuring all your invoicing, record-keeping, and VAT/Income Tax reporting is automatically compliant no accountant required for routine digital filing.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFAQ(this)">
+            <h4>How does Style Graphing protect my creative value against AI competition?</h4>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-body">As AI tools flood the market with generic high-volume content, human creativity is being devalued unless it is uniquely authenticated. Creative Launch OS's Style Graphing engine analyses your specific aesthetic markers colour palettes, compositional style, tonal voice, technical signatures and maps them to commercial evidence that quantifies your "Creative Uniqueness." This gives you the data to defend premium pricing, prove originality to corporate clients, and build a defensible competitive moat that AI-generated content cannot replicate.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFAQ(this)">
+            <h4>Can I trial Creative Launch OS before committing to a subscription?</h4>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-body">Yes Creative Launch OS is currently recruiting early-adopter creators and boutique agencies for a structured pilot programme at discounted or pilot-access pricing. Participants receive full platform access, founder-led onboarding support, and direct input into the product roadmap. We are targeting creators in photography, design, illustration, and technical art who currently manage 5+ client enquiries per month manually. Contact us to apply for a pilot position.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- end page pricing -->
+
+<!-- ═══════════════════════════════════════════
+     PAGE: CONTACT
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <section style="background:var(--bg-black);padding:clamp(80px,12vw,120px) 0 clamp(60px,8vw,100px);">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- LEFT CONTENT -->
+        <div>
+          <div class="label-tag">Get In Touch</div>
+          <h2 class="section-h2 green">Join the Creative Launch OS Pilot Programme</h2>
+          <div class="section-divider divider-green"></div>
+
+          <p class="contact-left-para">
+            Creative Launch OS is currently recruiting early-adopter creators and boutique agencies for a structured pilot programme. We are targeting emerging freelancers, independent photographers, designers, illustrators, and technical artists who are ready to transition from manual "DM-based" business management to an AI-powered operating system.
+          </p>
+
+          <p class="contact-left-para" style="margin-bottom:28px;">
+            Get in touch to schedule a live platform walkthrough and discover how Creative Launch OS can automate your client triage, protect your creative style, and launch a fully compliant UK business at a fraction of the cost of a traditional business manager or creative agent.
+          </p>
+
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div class="contact-item-text"><strong>Website</strong><span>creativelauncos.co.uk</span></div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-item-text"><strong>Location</strong><span>High Wycombe, United Kingdom</span></div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">🛡️</div>
+            <div class="contact-item-text"><strong>Data Infrastructure</strong><span>UK Cloud Hosting (AWS UK) · GDPR Compliant · Creator-Owned Data</span></div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📋</div>
+            <div class="contact-item-text"><strong>IP Protection</strong><span>UK Patent Filing · Style Graphing Trade Secret · Trademark Registered</span></div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">✅</div>
+            <div class="contact-item-text"><strong>Compliance</strong><span>HMRC MTD 2026 · ISO 27001 · UKCA Certification · EU AI Act Aligned</span></div>
+          </div>
+        </div>
+
+      <!-- FORM -->
+<form class="contact-form-card" id="demoForm">
+
+  <input type="hidden" name="access_key" value="0b1b7b9e-a547-4bfc-8efc-a3be06faac50">
+
+  <h3>Book a Demo</h3>
+
+  <div class="form-group">
+    <label class="form-label">Full Name</label>
+    <input type="text" name="name" class="form-ctrl" placeholder="Your name" required>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Creative Discipline</label>
+    <input type="text" name="discipline" class="form-ctrl" placeholder="e.g. Photography, Graphic Design, Illustration" required>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Email Address</label>
+    <input type="email" name="email" class="form-ctrl" placeholder="your@email.co.uk" required>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Creator Stage</label>
+    <select name="stage" class="form-ctrl" required>
+      <option value="">Select your stage</option>
+      <option>Emerging Freelancer</option>
+      <option>Established Solo Creator</option>
+      <option>Boutique Creative Agency</option>
+      <option>Creative University / Educator</option>
+      <option>Enterprise / Corporate Brand Team</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Monthly Client Enquiries</label>
+    <select name="volume" class="form-ctrl" required>
+      <option value="">Select volume</option>
+      <option>1–5 enquiries per month</option>
+      <option>5–20 enquiries per month</option>
+      <option>20–50 enquiries per month</option>
+      <option>50+ enquiries per month</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Biggest Business Challenge</label>
+    <textarea name="message" class="form-ctrl ta" required
+      placeholder="Admin overload, income instability, client triage, HMRC compliance, scaling to a team, protecting your creative style from AI..."></textarea>
+  </div>
+
+  <button class="form-submit" type="submit">
+    Submit Demo Request →
+  </button>
+
+  <div id="formSuccess" style="display:none;margin-top:16px;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.3);border-radius:8px;padding:14px;color:var(--purple-light);font-size:13px;text-align:center;font-family:var(--mono);">
+    ✓ Thank you! We'll be in touch within 24 hours.
+  </div>
+
+</form>
+
+<script>
+document.getElementById("demoForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  const response = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: formData
+  });
+
+  const result = await response.json();
+
+  if (result.success) {
+    document.getElementById("formSuccess").style.display = "block";
+    form.reset();
+  } else {
+    alert("Something went wrong. Please try again.");
+  }
+});
+</script>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo">Creative Launch OS</span>
+        <p>The UK's first AI-powered Business Operating System for the global creative class transforming unstructured creative portfolios into fully operational commercial entities using proprietary multimodal Style Graphing, agentic RAG-based lead triage, automated SOP extraction, and HMRC MTD-compliant financial infrastructure to help UK creators launch sustainable businesses, protect their creative style, and scale into micro-studio founders.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <a onclick="showPage('platform')">Style Graphing Engine</a>
+        <a onclick="showPage('platform')">AI Front Desk</a>
+        <a onclick="showPage('platform')">SOP Automation</a>
+        <a onclick="showPage('platform')">MTD Digital Bridge</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a onclick="showPage('about')">About Creative Launch OS</a>
+        <a onclick="showPage('market')">Market Analysis</a>
+        <a onclick="showPage('pricing')">Pricing &amp; Plans</a>
+        <a onclick="showPage('contact')">Book a Demo</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <span>Creative Launch OS</span> · High Wycombe, UK · UK GDPR Compliant · HMRC MTD 2026 Ready · Creator-Owned Data Architecture</p>
+      <p><span>creativelauncos.co.uk</span> · Innovator Founder Visa Application · Strictly Confidential · Business Plan 2026</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════ JAVASCRIPT ═══════════ -->
+<script>
+/* ─── PAGE NAV ───────────────────────────────── */
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-links button').forEach(b=>b.classList.remove('active'));
+  const pg=document.getElementById('page-'+name);
+  if(pg){pg.classList.add('active');}
+  const btn=document.getElementById('nav-'+name);
+  if(btn){btn.classList.add('active');}
+  window.scrollTo({top:0,behavior:'instant'});
+  if(name==='market'&&!window.marketChartsLoaded){initMarketCharts();window.marketChartsLoaded=true;}
+}
+
+function toggleCard(btn){
+  const card=btn.closest('.platform-card');
+  const isOpen=card.classList.contains('open');
+  document.querySelectorAll('.platform-card').forEach(c=>{
+    c.classList.remove('open');
+    const eb=c.querySelector('.expand-btn');
+    if(eb){eb.textContent=eb.textContent.includes('Expand')?'Expand ↓':'Learn More ↓';}
+  });
+  if(!isOpen){
+    card.classList.add('open');
+    btn.textContent=btn.textContent.includes('Expand')?'Collapse ↑':'Show Less ↑';
+  }
+}
+
+function toggleFAQ(el){
+  el.parentElement.classList.toggle('open');
+}
+
+function closeMobile(){
+  document.getElementById('mobileNav').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+document.getElementById('hamburger').addEventListener('click',function(){
+  this.classList.toggle('open');
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+
+function handleSubmit(e){
+  e.preventDefault();
+  document.getElementById('formSuccess').style.display='block';
+}
+
+/* ─── CHART THEME ────────────────────────────── */
+const PURPLE='rgba(124,58,237,1)';
+const PURPLE2='rgba(124,58,237,0.75)';
+const PURPLE3='rgba(124,58,237,0.4)';
+const BLUE='rgba(26,58,176,0.9)';
+const BLUE2='rgba(123,142,232,0.7)';
+const GRID='rgba(255,255,255,0.05)';
+const MUTED='rgba(138,155,208,0.75)';
+
+Chart.defaults.font.family="'IBM Plex Mono', monospace";
+Chart.defaults.font.size=11;
+Chart.defaults.color=MUTED;
+
+/* ─── MARKET CHARTS ──────────────────────────── */
+function initMarketCharts(){
+  // TAM Sector Breakdown
+  new Chart(document.getElementById('chartSector').getContext('2d'),{
+    type:'bar',
+    data:{
+      labels:['Individual Creatives','Boutique Agencies','Enterprise Brands','Creative Platforms','Higher Education'],
+      datasets:[{
+        label:'TAM (£M)',
+        data:[174,107.5,96,1.9,1.9],
+        backgroundColor:[PURPLE,PURPLE2,PURPLE3,'rgba(124,58,237,0.25)','rgba(26,58,176,0.6)'],
+        borderRadius:5,barPercentage:0.6
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:GRID},ticks:{color:MUTED,callback:v=>'£'+v+'M'}},y:{grid:{display:false},ticks:{color:MUTED,font:{size:10}}}}}
+  });
+
+  // Creator Pain Points
+  new Chart(document.getElementById('chartRootCause').getContext('2d'),{
+    type:'doughnut',
+    data:{
+      labels:['Admin Burnout (73%)','Income Volatility (58%)','Platform Erasure (60%)','Portfolio vs Business Gap','AI Devaluation Risk'],
+      datasets:[{
+        data:[73,58,60,45,38],
+        backgroundColor:[PURPLE,'rgba(124,58,237,0.7)',PURPLE3,'rgba(26,58,176,0.65)','rgba(123,142,232,0.5)'],
+        borderColor:['rgba(124,58,237,0.9)','rgba(124,58,237,0.7)','rgba(124,58,237,0.45)','rgba(26,58,176,0.7)','rgba(123,142,232,0.55)'],
+        borderWidth:1.5
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:MUTED,boxWidth:10,padding:10,font:{size:10}}}}}
+  });
+
+  // Radar Competitive
+  new Chart(document.getElementById('chartRadar').getContext('2d'),{
+    type:'radar',
+    data:{
+      labels:['Style Graphing AI','HMRC MTD Compliance','SOP Automation','Micro-Studio Scaling','Agentic Lead Triage','Creator Data Sovereignty'],
+      datasets:[
+        {label:'Creative Launch OS',data:[5,5,5,5,5,5],backgroundColor:'rgba(124,58,237,0.12)',borderColor:PURPLE,borderWidth:2,pointBackgroundColor:PURPLE},
+        {label:'HoneyBook (CRM)',data:[1,1,2,1,2,1],backgroundColor:'rgba(26,58,176,0.07)',borderColor:BLUE2,borderWidth:1.5,pointBackgroundColor:BLUE2},
+        {label:'Behance / Adobe',data:[2,1,1,1,1,2],backgroundColor:'rgba(100,180,255,0.06)',borderColor:'rgba(100,180,255,0.5)',borderWidth:1.5,pointBackgroundColor:'rgba(100,180,255,0.5)'},
+        {label:'Kajabi (Courses)',data:[1,1,1,2,2,1],backgroundColor:'rgba(200,150,255,0.06)',borderColor:'rgba(200,150,255,0.5)',borderWidth:1.5,pointBackgroundColor:'rgba(200,150,255,0.5)'},
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:MUTED,boxWidth:10,padding:14,font:{size:10}}}},scales:{r:{backgroundColor:'rgba(124,58,237,0.01)',grid:{color:GRID},pointLabels:{color:MUTED,font:{size:10}},ticks:{display:false},min:0,max:5}}}
+  });
+
+  // Revenue Growth Projection
+  new Chart(document.getElementById('chartGrowth').getContext('2d'),{
+    type:'bar',
+    data:{
+      labels:['Year 1','Year 2','Year 3','Year 4','Year 5'],
+      datasets:[
+        {label:'Annual Revenue (£)',data:[89033,495070,1180862,2130438,3090035],backgroundColor:'rgba(26,58,176,0.65)',borderRadius:5,barPercentage:0.55},
+        {type:'line',label:'Net Profit Margin %',data:[24.5,25,16.3,25.2,28.5],borderColor:PURPLE,borderWidth:2,yAxisID:'y2',tension:0.4,pointBackgroundColor:PURPLE,fill:false}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:MUTED,boxWidth:10,padding:12,font:{size:10}}}},scales:{x:{grid:{color:GRID},ticks:{color:MUTED}},y:{grid:{color:GRID},ticks:{color:MUTED,callback:v=>'£'+v.toLocaleString()}},y2:{position:'right',grid:{display:false},ticks:{color:MUTED,callback:v=>v+'%'}}}}
+  });
+
+  // Performance Comparison
+  new Chart(document.getElementById('chartPerf').getContext('2d'),{
+    type:'bar',
+    data:{
+      labels:['Style AI','MTD Bridge','SOP Auto','Lead Triage','Studio Scale','Data Rights'],
+      datasets:[
+        {label:'Creative Launch OS',data:[98,98,95,94,92,100],backgroundColor:PURPLE2,borderRadius:5,barPercentage:0.35},
+        {label:'Existing Creator Tools Avg',data:[5,5,10,15,5,20],backgroundColor:BLUE2,borderRadius:5,barPercentage:0.35}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:MUTED,boxWidth:10,padding:14,font:{size:10}}}},scales:{x:{grid:{color:GRID},ticks:{color:MUTED,font:{size:9}}},y:{grid:{color:GRID},ticks:{color:MUTED,callback:v=>v+' pts'}}}}
+  });
+}
+</script>
+</body>
+</html>
