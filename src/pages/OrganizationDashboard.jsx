@@ -13,7 +13,27 @@ export default function OrganizationDashboard() {
   const [activeTab, setActiveTab] = useState('discover');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilters, setSelectedFilters] = useState([]);
-  const organization = organizations[0];
+  
+  // Safety check for organization data
+  const organization = organizations && organizations.length > 0 ? organizations[0] : null;
+  
+  // If no organization data, show error state
+  if (!organization) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Unable to load dashboard</h2>
+          <p className="text-gray-600 mb-6">Organization data not found. Please try logging in again.</p>
+          <button 
+            onClick={() => navigate('/login')}
+            className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold"
+          >
+            Back to Login
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   const tabs = [
     { id: 'discover', icon: Search, label: 'Discover Creators' },

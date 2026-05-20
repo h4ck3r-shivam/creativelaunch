@@ -12,7 +12,27 @@ import { creators, aiRecommendations } from '../data/mockData';
 export default function CreatorDashboard() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('overview');
-  const creator = creators[0]; // Using first creator as logged-in user
+  
+  // Safety check for creator data
+  const creator = creators && creators.length > 0 ? creators[0] : null;
+  
+  // If no creator data, show error state
+  if (!creator) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Unable to load dashboard</h2>
+          <p className="text-gray-600 mb-6">Creator data not found. Please try logging in again.</p>
+          <button 
+            onClick={() => navigate('/login')}
+            className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold"
+          >
+            Back to Login
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   const tabs = [
     { id: 'overview', icon: BarChart3, label: 'Overview' },
@@ -43,11 +63,11 @@ export default function CreatorDashboard() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold text-lg">
-                {creator.avatar}
+                {creator?.avatar || '?'}
               </div>
               <div>
-                <h1 className="font-display font-bold text-gray-900 text-lg">{creator.name}</h1>
-                <p className="text-sm text-gray-600">{creator.role}</p>
+                <h1 className="font-display font-bold text-gray-900 text-lg">{creator?.name || 'Creator'}</h1>
+                <p className="text-sm text-gray-600">{creator?.role || 'Creative Professional'}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">

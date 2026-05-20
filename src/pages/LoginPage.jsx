@@ -23,33 +23,47 @@ export default function LoginPage() {
       password: user.password,
     });
     setSelectedDemo(user);
+    
+    // Auto-login with demo account after a brief delay to show selection
+    setTimeout(() => {
+      if (demoUsers.creators.find(u => u.email === user.email)) {
+        navigate('/creator-dashboard');
+      } else if (demoUsers.organizations.find(u => u.email === user.email)) {
+        navigate('/organization-dashboard');
+      }
+    }, 300);
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
     
-    // Check creator accounts
-    const creator = demoUsers.creators.find(
-      user => user.email === formData.email && user.password === formData.password
-    );
-    
-    if (creator) {
-      navigate('/creator-dashboard');
-      return;
+    try {
+      // Check creator accounts
+      const creator = demoUsers.creators.find(
+        user => user.email === formData.email && user.password === formData.password
+      );
+      
+      if (creator) {
+        navigate('/creator-dashboard');
+        return;
+      }
+      
+      // Check organization accounts
+      const organization = demoUsers.organizations.find(
+        user => user.email === formData.email && user.password === formData.password
+      );
+      
+      if (organization) {
+        navigate('/organization-dashboard');
+        return;
+      }
+      
+      // Invalid credentials - show error
+      alert('Invalid credentials. Click a demo account below to auto-login.');
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('An error occurred during login. Please try again.');
     }
-    
-    // Check organization accounts
-    const organization = demoUsers.organizations.find(
-      user => user.email === formData.email && user.password === formData.password
-    );
-    
-    if (organization) {
-      navigate('/organization-dashboard');
-      return;
-    }
-    
-    // Invalid credentials - in real app, show error
-    alert('Invalid credentials. Use demo accounts below.');
   };
 
   return (

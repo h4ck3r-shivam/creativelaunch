@@ -14,12 +14,12 @@ export default function LandingPage() {
   const [activeCreator, setActiveCreator] = useState(0);
 
   const creatorTypes = [
-    { icon: Palette, name: 'Graphic Designers', count: '12,000+' },
-    { icon: Video, name: 'Video Editors', count: '8,500+' },
-    { icon: Camera, name: 'Photographers', count: '15,000+' },
-    { icon: PenTool, name: 'Illustrators', count: '6,200+' },
-    { icon: Music, name: 'Musicians', count: '4,800+' },
-    { icon: Code, name: 'UI/UX Designers', count: '9,100+' },
+    { icon: Palette, name: 'Graphic Designers', count: 'Coming Soon' },
+    { icon: Video, name: 'Video Editors', count: 'Coming Soon' },
+    { icon: Camera, name: 'Photographers', count: 'Coming Soon' },
+    { icon: PenTool, name: 'Illustrators', count: 'Coming Soon' },
+    { icon: Music, name: 'Musicians', count: 'Coming Soon' },
+    { icon: Code, name: 'UI/UX Designers', count: 'Coming Soon' },
   ];
 
   const features = [
@@ -50,10 +50,10 @@ export default function LandingPage() {
   ];
 
   const stats = [
-    { value: '50,000+', label: 'Active Creators' },
-    { value: '2,500+', label: 'Organizations' },
-    { value: '$125M+', label: 'Platform Revenue' },
-    { value: '98%', label: 'Satisfaction Rate' },
+    { value: 'Beta', label: 'Version 0.1' },
+    { value: '500+', label: 'Waitlist Spots' },
+    { value: 'Q3 2026', label: 'Expected Launch' },
+    { value: 'Early', label: 'Access Only' },
   ];
 
   return (
@@ -80,14 +80,24 @@ export default function LandingPage() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            {/* Badge */}
+            {/* Beta Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-xl border border-purple-200 mb-8 shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white mb-8 shadow-lg"
             >
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-sm font-mono text-gray-600">AI-NATIVE PLATFORM</span>
+              <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
+              <span className="text-sm font-mono font-semibold">BETA PREVIEW v0.1</span>
+            </motion.div>
+
+            {/* Alpha/Beta Notice */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-100 border border-yellow-300 mb-4"
+            >
+              <span className="text-xs font-mono text-yellow-800">🚧 Under Development - Join the Waitlist</span>
             </motion.div>
 
             {/* Main Heading */}
@@ -95,11 +105,11 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 leading-tight"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight"
             >
-              Run your creative business
+              The Future of Creative
               <br />
-              <span className="text-gradient">like a studio.</span>
+              <span className="text-gradient">Work is Coming.</span>
             </motion.h1>
 
             {/* Subheading */}
@@ -107,10 +117,10 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed"
+              className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed"
             >
-              Creative Launch is your AI-powered creative business co-pilot that handles bookings, 
-              leads, projects and analytics — so creators spend their time creating, not chasing.
+              We're building the AI-powered platform that will transform how creators and organizations collaborate. 
+              Be among the first to experience it.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -121,18 +131,28 @@ export default function LandingPage() {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <button
-                onClick={() => navigate('/onboarding')}
+                onClick={() => navigate('/waitlist')}
                 className="group px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-mono font-semibold text-base sm:text-lg hover:shadow-xl hover:shadow-purple-500/25 transition-all flex items-center gap-3"
               >
                 <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
-                Launch Your Career
+                Join Waitlist
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </button>
               <button className="group px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-white/80 backdrop-blur-xl border border-gray-200 text-gray-900 font-mono font-semibold text-base sm:text-lg hover:bg-white transition-all flex items-center gap-3 shadow-sm">
                 <Play className="w-4 h-4 sm:w-5 sm:h-5" />
-                Watch Demo
+                Watch Preview
               </button>
             </motion.div>
+
+            {/* Limited Spots Notice */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="mt-4 text-sm text-gray-500"
+            >
+              🔥 Only 500 early access spots available
+            </motion.p>
 
             {/* Creator Types Carousel */}
             <motion.div
@@ -141,7 +161,7 @@ export default function LandingPage() {
               transition={{ delay: 1 }}
               className="mt-20"
             >
-              <p className="text-sm font-mono text-gray-500 mb-6 tracking-widest uppercase">Powering 50,000+ Creators Worldwide</p>
+              <p className="text-sm font-mono text-gray-500 mb-6 tracking-widest uppercase">For All Creative Professionals</p>
               <div className="flex flex-wrap justify-center gap-4">
                 {creatorTypes.map((type, index) => (
                   <motion.div
@@ -163,9 +183,14 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="relative py-20 border-y border-gray-200 bg-white">
+      {/* Beta Stats Section */}
+      <section className="relative py-16 border-y border-gray-200 bg-gradient-to-r from-orange-50 to-red-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-mono mb-4">
+              🚀 LAUNCH TIMELINE
+            </span>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <motion.div
@@ -176,29 +201,32 @@ export default function LandingPage() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <p className="font-display text-4xl sm:text-5xl font-bold text-gradient mb-2">{stat.value}</p>
-                <p className="text-gray-600 font-mono text-sm">{stat.label}</p>
+                <p className="font-display text-3xl sm:text-4xl font-bold text-gradient mb-2">{stat.value}</p>
+                <p className="text-gray-600 font-mono text-xs">{stat.label}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="relative py-32 bg-gray-50">
+      {/* Features Preview Section */}
+      <section className="relative py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-16"
           >
-            <p className="text-sm font-mono text-purple-600 mb-4 tracking-widest uppercase">Platform Features</p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-              Built for the Future of Work
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-mono mb-4">
+              🎯 FEATURE PREVIEW
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              What We're Building
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Our AI-native infrastructure transforms how creators and organizations collaborate.
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              A sneak peek at the AI-powered features coming to Creative Launch. 
+              Join the waitlist to be the first to try them.
             </p>
           </motion.div>
 
