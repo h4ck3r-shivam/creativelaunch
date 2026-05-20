@@ -5,7 +5,7 @@ import {
   TrendingUp, DollarSign, Users, Briefcase, Calendar, 
   FileText, MessageSquare, Settings, LogOut, Sparkles,
   BarChart3, PieChart, Activity, Target, ArrowUpRight,
-  Clock, CheckCircle, AlertCircle, Play, Pause, Plus
+  Clock, CheckCircle, AlertCircle, Play, Pause, Plus, Palette
 } from 'lucide-react';
 import { creators, aiRecommendations } from '../data/mockData';
 
