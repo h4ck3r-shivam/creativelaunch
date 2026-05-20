@@ -6,7 +6,6 @@ import {
   ArrowRight, Sparkles, ArrowLeft, UserPlus, MapPin,
   DollarSign, Briefcase, Palette, Camera, Video, PenTool
 } from 'lucide-react';
-import Footer from '../components/Footer';
 
 export default function SignupPage() {
   const navigate = useNavigate();
@@ -506,8 +505,6 @@ export default function SignupPage() {
         </motion.div>
       </div>
 
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

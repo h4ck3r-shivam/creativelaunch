@@ -6,7 +6,6 @@ import {
   ArrowRight, Sparkles, ArrowLeft, LogIn
 } from 'lucide-react';
 import { demoUsers } from '../data/mockData';
-import Footer from '../components/Footer';
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -282,8 +281,6 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }
