@@ -121,44 +121,46 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-white/80 backdrop-blur-xl border-t border-gray-200"
+          className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200 shadow-lg"
         >
-          <div className="px-4 py-4 space-y-2">
+          <div className="px-4 py-3 space-y-1">
             {isHomePage && navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.path)}
-                className="w-full px-4 py-3 rounded-lg text-sm font-mono font-medium text-left text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all"
+                className="w-full px-4 py-2.5 rounded-lg text-sm font-mono font-medium text-left text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-all"
               >
                 {item.label}
               </button>
             ))}
             
-            {isAuthPage ? (
-              <button
-                onClick={() => handleNavClick('/')}
-                className="w-full px-4 py-3 rounded-lg text-sm font-mono font-medium text-left text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all"
-              >
-                Back to Home
-              </button>
-            ) : (
-              <>
+            <div className="border-t border-gray-100 my-2 pt-2">
+              {isAuthPage ? (
                 <button
-                  onClick={() => handleNavClick('/login')}
-                  className="w-full px-4 py-3 rounded-lg text-sm font-mono font-medium text-left text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all flex items-center gap-2"
+                  onClick={() => handleNavClick('/')}
+                  className="w-full px-4 py-2.5 rounded-lg text-sm font-mono font-medium text-left text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-all"
                 >
-                  <LogIn className="w-4 h-4" />
-                  Login
+                  Back to Home
                 </button>
-                <button
-                  onClick={() => handleNavClick('/signup')}
-                  className="w-full px-4 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-mono font-semibold flex items-center gap-2"
-                >
-                  <UserPlus className="w-4 h-4" />
-                  Sign Up
-                </button>
-              </>
-            )}
+              ) : (
+                <>
+                  <button
+                    onClick={() => handleNavClick('/login')}
+                    className="w-full px-4 py-2.5 rounded-lg text-sm font-mono font-medium text-left text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-all flex items-center gap-2"
+                  >
+                    <LogIn className="w-4 h-4" />
+                    Login
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/signup')}
+                    className="w-full px-4 py-2.5 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-mono font-semibold flex items-center gap-2 mt-1"
+                  >
+                    <UserPlus className="w-4 h-4" />
+                    Sign Up
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         </motion.div>
       )}

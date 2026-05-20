@@ -39,11 +39,11 @@ export default function Footer() {
   return (
     <footer className="bg-white/80 backdrop-blur-xl border-t border-gray-200">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid lg:grid-cols-5 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="md:col-span-2 lg:col-span-2">
+            <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
                 <Rocket className="w-5 h-5 text-white" />
               </div>
@@ -53,7 +53,7 @@ export default function Footer() {
               </div>
             </div>
             
-            <p className="text-gray-600 mb-6 leading-relaxed">
+            <p className="text-gray-600 mb-4 leading-relaxed text-sm md:text-base">
               Connect world-class creative talent with forward-thinking organizations through 
               intelligent AI matching, automated workflows, and seamless collaboration.
             </p>
@@ -77,9 +77,9 @@ export default function Footer() {
           </div>
 
           {/* Product Links */}
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-4">Product</h4>
-            <ul className="space-y-3">
+          <div className="text-center md:text-left">
+            <h4 className="font-semibold text-gray-900 mb-3 text-sm md:text-base">Product</h4>
+            <ul className="space-y-2 md:space-y-3">
               {footerLinks.product.map((link, index) => (
                 <motion.li
                   key={link.label}
@@ -89,7 +89,7 @@ export default function Footer() {
                 >
                   <button
                     onClick={() => navigate(link.path)}
-                    className="text-gray-600 hover:text-purple-600 transition-colors text-sm"
+                    className="text-gray-600 hover:text-purple-600 transition-colors text-xs md:text-sm"
                   >
                     {link.label}
                   </button>
@@ -99,9 +99,9 @@ export default function Footer() {
           </div>
 
           {/* Company Links */}
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-4">Company</h4>
-            <ul className="space-y-3">
+          <div className="text-center md:text-left">
+            <h4 className="font-semibold text-gray-900 mb-3 text-sm md:text-base">Company</h4>
+            <ul className="space-y-2 md:space-y-3">
               {footerLinks.company.map((link, index) => (
                 <motion.li
                   key={link.label}
@@ -111,7 +111,7 @@ export default function Footer() {
                 >
                   <button
                     onClick={() => navigate(link.path)}
-                    className="text-gray-600 hover:text-purple-600 transition-colors text-sm"
+                    className="text-gray-600 hover:text-purple-600 transition-colors text-xs md:text-sm"
                   >
                     {link.label}
                   </button>
@@ -121,9 +121,9 @@ export default function Footer() {
           </div>
 
           {/* Legal Links */}
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-4">Legal</h4>
-            <ul className="space-y-3">
+          <div className="text-center md:text-left">
+            <h4 className="font-semibold text-gray-900 mb-3 text-sm md:text-base">Legal</h4>
+            <ul className="space-y-2 md:space-y-3">
               {footerLinks.legal.map((link, index) => (
                 <motion.li
                   key={link.label}
@@ -133,7 +133,7 @@ export default function Footer() {
                 >
                   <button
                     onClick={() => navigate(link.path)}
-                    className="text-gray-600 hover:text-purple-600 transition-colors text-sm"
+                    className="text-gray-600 hover:text-purple-600 transition-colors text-xs md:text-sm"
                   >
                     {link.label}
                   </button>
@@ -148,22 +148,22 @@ export default function Footer() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="mt-16 p-8 rounded-2xl bg-gradient-to-br from-purple-50 to-blue-50 border border-purple-100"
+          className="mt-12 md:mt-16 p-6 md:p-8 rounded-2xl bg-gradient-to-br from-purple-50 to-blue-50 border border-purple-100"
         >
           <div className="max-w-2xl mx-auto text-center">
-            <h3 className="font-display text-2xl font-bold text-gray-900 mb-3">
+            <h3 className="font-display text-xl md:text-2xl font-bold text-gray-900 mb-2 md:mb-3">
               Stay in the loop
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">
               Get the latest updates on AI-powered creative business tools and early access to new features.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all outline-none"
+                className="flex-1 px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all outline-none text-sm md:text-base"
               />
-              <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-mono font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all">
+              <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-mono font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all text-sm md:text-base">
                 Subscribe
               </button>
             </div>
@@ -173,12 +173,12 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-gray-600">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2 md:gap-4">
+            <p className="text-xs md:text-sm text-gray-600 text-center sm:text-left">
               © 2026 Creative Launch. Built for creators.
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 md:gap-4">
               <span className="text-xs text-gray-500 font-mono">v0.1.0 · preview</span>
               <button
                 onClick={scrollToTop}
