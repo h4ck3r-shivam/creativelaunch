@@ -393,27 +393,31 @@ export default function CreatorDashboard() {
 
                 {/* Style Metrics */}
                 <div className="space-y-6">
-                  {Object.entries(creator.styleGraph).map(([key, value], index) => (
-                    <motion.div
-                      key={key}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-mono text-gray-600 capitalize">{key}</span>
-                        <span className="text-sm font-mono text-gray-900">{value}%</span>
-                      </div>
-                      <div className="h-2 rounded-full bg-gray-200 overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${value}%` }}
-                          transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
-                          className="h-full rounded-full bg-gradient-to-r from-purple-600 to-blue-600"
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
+                  {creator?.styleGraph ? (
+                    Object.entries(creator.styleGraph).map(([key, value], index) => (
+                      <motion.div
+                        key={key}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-sm font-mono text-gray-600 capitalize">{key}</span>
+                          <span className="text-sm font-mono text-gray-900">{value}%</span>
+                        </div>
+                        <div className="h-2 rounded-full bg-gray-200 overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${value}%` }}
+                            transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
+                            className="h-full rounded-full bg-gradient-to-r from-purple-600 to-blue-600"
+                          />
+                        </div>
+                      </motion.div>
+                    ))
+                  ) : (
+                    <p className="text-sm text-gray-500 text-center py-4">No style data available</p>
+                  )}
                 </div>
               </div>
             </div>
