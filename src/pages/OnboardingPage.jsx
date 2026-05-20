@@ -24,7 +24,7 @@ export default function OnboardingPage() {
     {
       id: 'organization',
       icon: Building2,
-      title: 'I\'m an Organization',
+      title: 'Find my Fit',
       description: 'Companies, agencies, and businesses looking for creative talent',
       color: 'from-blue-600 to-cyan-600',
       hover: 'hover:shadow-blue-500/25',
