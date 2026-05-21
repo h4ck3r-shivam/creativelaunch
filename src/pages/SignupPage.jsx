@@ -6,6 +6,7 @@ import {
   ArrowRight, Sparkles, ArrowLeft, UserPlus, MapPin,
   DollarSign, Briefcase, Palette, Camera, Video, PenTool
 } from 'lucide-react';
+import Navbar from '../components/Navbar';
 
 export default function SignupPage() {
   const navigate = useNavigate();
@@ -368,7 +369,11 @@ export default function SignupPage() {
   const totalSteps = 2;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+      {/* Navbar */}
+      <Navbar />
+
+      <div className="flex items-center justify-center p-4 pt-20">
       <div className="w-full max-w-4xl">
         <motion.button
           initial={{ opacity: 0, x: -20 }}
@@ -504,7 +509,7 @@ export default function SignupPage() {
           </div>
         </motion.div>
       </div>
-
+      </div>
     </div>
   );
 }

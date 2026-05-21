@@ -7,6 +7,7 @@ import {
   Download, Share2, MoreVertical, Play, Pause, Users,
   DollarSign, Target, TrendingUp, Sparkles
 } from 'lucide-react';
+import Navbar from '../components/Navbar';
 import { projects } from '../data/mockData';
 
 export default function ProjectWorkspace() {
@@ -33,6 +34,9 @@ export default function ProjectWorkspace() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+      {/* Navbar */}
+      <Navbar />
+
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-xl border-b border-gray-200 sticky top-0 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

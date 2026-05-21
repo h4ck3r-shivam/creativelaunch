@@ -5,6 +5,7 @@ import {
   User, Building2, Mail, Lock, Eye, EyeOff, 
   ArrowRight, Sparkles, ArrowLeft, LogIn
 } from 'lucide-react';
+import Navbar from '../components/Navbar';
 import { demoUsers } from '../data/mockData';
 
 export default function LoginPage() {
@@ -67,8 +68,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center p-4">
-      <div className="w-full max-w-6xl">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+      {/* Navbar */}
+      <Navbar />
+
+      <div className="flex items-center justify-center p-4 pt-20">
+        <div className="w-full max-w-6xl">
         <motion.button
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -294,7 +299,7 @@ export default function LoginPage() {
           </motion.div>
         </div>
       </div>
-
+      </div>
     </div>
   );
 }

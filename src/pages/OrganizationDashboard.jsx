@@ -6,6 +6,7 @@ import {
   DollarSign, Calendar, Star, MapPin, ArrowRight, Heart,
   MessageSquare, Plus, Settings, LogOut, Sliders, Target
 } from 'lucide-react';
+import Navbar from '../components/Navbar';
 import { creators, organizations } from '../data/mockData';
 
 export default function OrganizationDashboard() {
@@ -81,6 +82,9 @@ export default function OrganizationDashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+      {/* Navbar */}
+      <Navbar />
+
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-xl border-b border-gray-200 sticky top-0 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -146,85 +150,157 @@ export default function OrganizationDashboard() {
                 </div>
               </div>
 
-              {/* Chat Interface */}
-              <div className="bg-gray-50 rounded-2xl p-6 mb-6">
-                <div className="space-y-4 mb-6 max-h-64 overflow-y-auto">
-                  <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white text-xs font-bold">
-                      AI
-                    </div>
-                    <div className="flex-1">
-                      <div className="bg-white rounded-xl p-4 shadow-sm">
-                        <p className="text-sm text-gray-900">Hello! I'm your AI Front Desk. I can help you find creators, qualify leads, and manage projects. How can I assist you today?</p>
-                      </div>
-                      <p className="text-xs text-gray-500 mt-2">AI Assistant • Just now</p>
-                    </div>
+              {/* Two Chat Examples Side by Side */}
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                {/* Example 1: Skincare Brand Photographer */}
+                <div className="bg-gray-50 rounded-2xl p-6">
+                  <div className="text-center mb-4">
+                    <span className="text-xs font-mono text-purple-600 bg-purple-100 px-3 py-1 rounded-full">Skincare Brand Example</span>
                   </div>
-                  
-                  <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center text-white text-xs font-bold">
-                      TF
-                    </div>
-                    <div className="flex-1">
-                      <div className="bg-white rounded-xl p-4 shadow-sm">
-                        <p className="text-sm text-gray-900">I need a minimalist photographer for a skincare brand launch</p>
+                  <div className="space-y-3">
+                    <div className="flex gap-2">
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                        AI
                       </div>
-                      <p className="text-xs text-gray-500 mt-2">You • Just now</p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white text-xs font-bold">
-                      AI
-                    </div>
-                    <div className="flex-1">
-                      <div className="bg-white rounded-xl p-4 shadow-sm">
-                        <p className="text-sm text-gray-900 mb-3">Perfect! I found 3 ideal matches for your skincare brand:</p>
-                        <div className="space-y-2">
-                          <div className="flex items-center justify-between p-3 bg-purple-50 rounded-lg border border-purple-200">
-                            <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white text-xs font-bold">
-                                SA
-                              </div>
-                              <div>
-                                <p className="text-sm font-semibold text-gray-900">Sofia Andersson</p>
-                                <p className="text-xs text-gray-600">Photographer • 98% match</p>
-                              </div>
-                            </div>
-                            <span className="text-xs font-mono text-purple-700 bg-purple-100 px-2 py-1 rounded-full">$120/hr</span>
-                          </div>
+                      <div className="flex-1">
+                        <div className="bg-white rounded-lg p-3 shadow-sm">
+                          <p className="text-xs text-gray-900">Hi! I'm here to help. What type of creative project are you looking for?</p>
                         </div>
-                        <p className="text-sm text-gray-600 mt-3">Would you like me to reach out to Sofia for you?</p>
+                        <p className="text-xs text-gray-500 mt-1">AI Assistant</p>
                       </div>
-                      <p className="text-xs text-gray-500 mt-2">AI Assistant • Just now</p>
+                    </div>
+                    <div className="flex gap-2 justify-end">
+                      <div className="flex-1 flex justify-end">
+                        <div className="bg-purple-600 text-white rounded-lg p-3 max-w-[90%]">
+                          <p className="text-xs">Need a minimalist photographer for luxury skincare brand launch in London</p>
+                        </div>
+                      </div>
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                        FM
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                        AI
+                      </div>
+                      <div className="flex-1">
+                        <div className="bg-white rounded-lg p-3 shadow-sm">
+                          <p className="text-xs text-gray-900 mb-2">Perfect! I found Sarah Mitchell - she shoots for British Vogue & Harrods:</p>
+                          <div className="bg-purple-50 rounded-lg p-2 border border-purple-200">
+                            <div className="flex items-center justify-between mb-2">
+                              <div className="flex items-center gap-2">
+                                <div className="w-5 h-5 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white text-xs font-bold">
+                                  SM
+                                </div>
+                                <div>
+                                  <p className="text-xs font-semibold text-gray-900">Sarah Mitchell</p>
+                                  <p className="text-xs text-gray-600">Photographer • Notting Hill</p>
+                                </div>
+                              </div>
+                              <span className="text-xs font-mono text-purple-700 bg-purple-100 px-2 py-0.5 rounded-full">98%</span>
+                            </div>
+                            <div className="space-y-1">
+                              <p className="text-xs text-purple-700">• £120/hour</p>
+                              <p className="text-xs text-purple-700">• British Vogue, Harrods, Burberry</p>
+                              <p className="text-xs text-purple-700">• Available from January 2025</p>
+                            </div>
+                          </div>
+                          <p className="text-xs text-gray-600 mt-2">Would you like me to reach out to Sarah for you?</p>
+                        </div>
+                        <p className="text-xs text-gray-500 mt-1">AI Assistant</p>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Quick Actions */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <button className="px-3 py-2 rounded-lg bg-white border border-gray-200 text-xs text-gray-600 hover:text-gray-900 hover:border-purple-300 transition-all">
-                    Find photographers
-                  </button>
-                  <button className="px-3 py-2 rounded-lg bg-white border border-gray-200 text-xs text-gray-600 hover:text-gray-900 hover:border-purple-300 transition-all">
-                    Qualify leads
-                  </button>
-                  <button className="px-3 py-2 rounded-lg bg-white border border-gray-200 text-xs text-gray-600 hover:text-gray-900 hover:border-purple-300 transition-all">
-                    Schedule calls
-                  </button>
+                {/* Example 2: Tattoo Artist */}
+                <div className="bg-gray-50 rounded-2xl p-6">
+                  <div className="text-center mb-4">
+                    <span className="text-xs font-mono text-blue-600 bg-blue-100 px-3 py-1 rounded-full">Tattoo Studio Example</span>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex gap-2">
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                        AI
+                      </div>
+                      <div className="flex-1">
+                        <div className="bg-white rounded-lg p-3 shadow-sm">
+                          <p className="text-xs text-gray-900">Hi! I'm here to help. What type of creative project are you looking for?</p>
+                        </div>
+                        <p className="text-xs text-gray-500 mt-1">AI Assistant</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-2 justify-end">
+                      <div className="flex-1 flex justify-end">
+                        <div className="bg-blue-600 text-white rounded-lg p-3 max-w-[90%]">
+                          <p className="text-xs">Looking for a tattoo artist for my Bristol studio - specialising in British wildlife designs</p>
+                        </div>
+                      </div>
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                        TS
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                        AI
+                      </div>
+                      <div className="flex-1">
+                        <div className="bg-white rounded-lg p-3 shadow-sm">
+                          <p className="text-xs text-gray-900 mb-2">Great match! Emma Wilson specialises in British countryside illustrations:</p>
+                          <div className="bg-blue-50 rounded-lg p-2 border border-blue-200">
+                            <div className="flex items-center justify-between mb-2">
+                              <div className="flex items-center gap-2">
+                                <div className="w-5 h-5 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white text-xs font-bold">
+                                  EW
+                                </div>
+                                <div>
+                                  <p className="text-xs font-semibold text-gray-900">Emma Wilson</p>
+                                  <p className="text-xs text-gray-600">Illustrator • Bristol</p>
+                                </div>
+                              </div>
+                              <span className="text-xs font-mono text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full">93%</span>
+                            </div>
+                            <div className="space-y-1">
+                              <p className="text-xs text-blue-700">• £65/hour</p>
+                              <p className="text-xs text-blue-700">• Bloomsbury, National Trust, Penguin</p>
+                              <p className="text-xs text-blue-700">• Watercolour & British countryside specialist</p>
+                            </div>
+                          </div>
+                          <p className="text-xs text-gray-600 mt-2">Would you like me to reach out to Emma for you?</p>
+                        </div>
+                        <p className="text-xs text-gray-500 mt-1">AI Assistant</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
 
-                {/* Input */}
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Ask me anything about finding creators or managing projects..."
-                    className="w-full px-4 py-3 pr-12 rounded-xl bg-white border border-gray-200 text-sm text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all outline-none"
-                  />
-                  <button className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg hover:shadow-purple-500/25 transition-all">
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
+              {/* Quick Actions */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                <button className="px-3 py-2 rounded-lg bg-white border border-gray-200 text-xs text-gray-600 hover:text-gray-900 hover:border-purple-300 transition-all">
+                  Find photographers
+                </button>
+                <button className="px-3 py-2 rounded-lg bg-white border border-gray-200 text-xs text-gray-600 hover:text-gray-900 hover:border-purple-300 transition-all">
+                  Find illustrators
+                </button>
+                <button className="px-3 py-2 rounded-lg bg-white border border-gray-200 text-xs text-gray-600 hover:text-gray-900 hover:border-purple-300 transition-all">
+                  Qualify leads
+                </button>
+                <button className="px-3 py-2 rounded-lg bg-white border border-gray-200 text-xs text-gray-600 hover:text-gray-900 hover:border-purple-300 transition-all">
+                  Schedule calls
+                </button>
+              </div>
+
+              {/* Input */}
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Ask me anything about finding creators or managing projects..."
+                  className="w-full px-4 py-3 pr-12 rounded-xl bg-white border border-gray-200 text-sm text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all outline-none"
+                />
+                <button className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg hover:shadow-purple-500/25 transition-all">
+                  <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
             </div>
 

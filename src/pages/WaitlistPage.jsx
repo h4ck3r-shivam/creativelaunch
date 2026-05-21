@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 export default function WaitlistPage() {
@@ -16,6 +17,9 @@ export default function WaitlistPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Navbar */}
+      <Navbar />
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
         <motion.div

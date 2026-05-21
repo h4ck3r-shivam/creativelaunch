@@ -137,27 +137,75 @@ export default function AIFrontDeskPage() {
                   <p className="text-gray-600">See how AI Front Desk handles customer inquiries</p>
                 </div>
 
-                {/* Chat Demo */}
-                <div className="bg-gray-50 rounded-xl p-4 space-y-3">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
-                      <Brain className="w-4 h-4 text-purple-600" />
+                {/* Two Chat Examples Side by Side */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  {/* Example 1: Skincare Brand Photographer */}
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <div className="text-center mb-3">
+                      <span className="text-xs font-mono text-purple-600 bg-purple-100 px-2 py-1 rounded-full">Skincare Brand</span>
                     </div>
-                    <div className="bg-white rounded-lg p-3 max-w-[80%]">
-                      <p className="text-sm text-gray-900">Hi! I'm here to help you with your creative project. What can I assist you with today?</p>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-2">
+                        <div className="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+                          <Brain className="w-3 h-3 text-purple-600" />
+                        </div>
+                        <div className="bg-white rounded-lg p-2 max-w-[85%]">
+                          <p className="text-xs text-gray-900">Hi! I'm here to help. What type of creative project are you looking for?</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2 justify-end">
+                        <div className="bg-purple-600 text-white rounded-lg p-2 max-w-[85%]">
+                          <p className="text-xs">Need a minimalist photographer for luxury skincare brand launch in London</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <div className="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+                          <Brain className="w-3 h-3 text-purple-600" />
+                        </div>
+                        <div className="bg-white rounded-lg p-2 max-w-[85%]">
+                          <p className="text-xs text-gray-900 mb-1">Perfect! I found Sarah Mitchell - she shoots for British Vogue & Harrods:</p>
+                          <div className="bg-purple-50 rounded p-2 mt-1">
+                            <p className="text-xs text-purple-700">• Notting Hill based</p>
+                            <p className="text-xs text-purple-700">• £120/hour</p>
+                            <p className="text-xs text-purple-700">• 98% match score</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3 justify-end">
-                    <div className="bg-purple-600 text-white rounded-lg p-3 max-w-[80%]">
-                      <p className="text-sm">I need a logo design for my startup</p>
+
+                  {/* Example 2: Tattoo Artist */}
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <div className="text-center mb-3">
+                      <span className="text-xs font-mono text-blue-600 bg-blue-100 px-2 py-1 rounded-full">Tattoo Studio</span>
                     </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
-                      <Brain className="w-4 h-4 text-purple-600" />
-                    </div>
-                    <div className="bg-white rounded-lg p-3 max-w-[80%]">
-                      <p className="text-sm text-gray-900">Perfect! I'd love to help with your logo design. What's your startup name and industry? This will help me match you with the perfect designer.</p>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-2">
+                        <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <Brain className="w-3 h-3 text-blue-600" />
+                        </div>
+                        <div className="bg-white rounded-lg p-2 max-w-[85%]">
+                          <p className="text-xs text-gray-900">Hi! I'm here to help. What type of creative project are you looking for?</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2 justify-end">
+                        <div className="bg-blue-600 text-white rounded-lg p-2 max-w-[85%]">
+                          <p className="text-xs">Looking for a tattoo artist for my Bristol studio - specialising in British wildlife designs</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <Brain className="w-3 h-3 text-blue-600" />
+                        </div>
+                        <div className="bg-white rounded-lg p-2 max-w-[85%]">
+                          <p className="text-xs text-gray-900 mb-1">Great match! Emma Wilson specialises in British countryside illustrations:</p>
+                          <div className="bg-blue-50 rounded p-2 mt-1">
+                            <p className="text-xs text-blue-700">• Bristol based</p>
+                            <p className="text-xs text-blue-700">• £65/hour</p>
+                            <p className="text-xs text-blue-700">• 93% match score</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
