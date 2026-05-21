@@ -5,7 +5,7 @@ import {
   TrendingUp, DollarSign, Users, Briefcase, Calendar, 
   FileText, MessageSquare, Settings, LogOut, Sparkles,
   BarChart3, PieChart, Activity, Target, ArrowUpRight,
-  Clock, CheckCircle, AlertCircle, Play, Pause, Plus, Palette
+  Clock, CheckCircle, AlertCircle, Play, Pause, Plus, Palette, ArrowLeft
 } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import { creators, aiRecommendations } from '../data/mockData';
@@ -75,12 +75,20 @@ export default function CreatorDashboard() {
               </div>
             </div>
             <div className="flex items-center gap-3">
+              <button 
+                onClick={() => navigate('/')}
+                className="p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all"
+                title="Back to Home"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </button>
               <button className="p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all">
                 <Settings className="w-5 h-5" />
               </button>
               <button 
                 onClick={() => navigate('/')}
                 className="p-2 rounded-lg text-gray-600 hover:text-red-600 hover:bg-red-50 transition-all"
+                title="Logout"
               >
                 <LogOut className="w-5 h-5" />
               </button>
