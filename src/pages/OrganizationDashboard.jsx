@@ -329,66 +329,92 @@ export default function OrganizationDashboard() {
               </div>
 
               {/* AI Search Examples - Side by Side */}
-              <div className="grid md:grid-cols-2 gap-4 mb-6">
+              <div className="grid md:grid-cols-2 gap-5 mb-6">
                 {/* Example 1 - Video Editor for Documentary */}
-                <div className="bg-gray-50 rounded-xl p-4">
-                  <div className="text-center mb-3">
-                    <span className="text-xs font-mono text-purple-600 bg-purple-100 px-2 py-1 rounded-full">Documentary Example</span>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="bg-white rounded-lg p-2">
-                      <p className="text-xs text-gray-500 mb-1">Search Query:</p>
-                      <p className="text-xs text-gray-900 font-medium">"Need video editor for BBC Three documentary about Manchester's creative revival"</p>
+                <div className="bg-gradient-to-br from-purple-50 to-white rounded-2xl p-5 border-2 border-purple-200 shadow-lg hover:shadow-xl transition-all">
+                  <div className="flex items-center justify-center mb-4">
+                    <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-1.5 rounded-full text-xs font-mono font-semibold shadow-md">
+                      🎬 Documentary
                     </div>
-                    <div className="bg-purple-50 rounded-lg p-2 border border-purple-200">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2">
-                          <div className="w-5 h-5 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white text-xs font-bold">
+                  </div>
+                  <div className="space-y-3">
+                    <div className="bg-white rounded-xl p-3 shadow-sm border border-purple-100">
+                      <p className="text-xs text-gray-500 mb-1 font-mono uppercase tracking-wider">Search Query:</p>
+                      <p className="text-sm text-gray-900 font-semibold leading-relaxed">"Need video editor for BBC Three documentary about Manchester's creative revival"</p>
+                    </div>
+                    <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-4 border-2 border-purple-200">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white font-bold text-sm shadow-md">
                             JW
                           </div>
                           <div>
-                            <p className="text-xs font-semibold text-gray-900">James Whitmore</p>
-                            <p className="text-xs text-gray-600">Video Production • Manchester</p>
+                            <p className="text-sm font-bold text-gray-900">James Whitmore</p>
+                            <p className="text-xs text-purple-600">Video Production • Manchester</p>
                           </div>
                         </div>
-                        <span className="text-xs font-mono text-purple-700 bg-purple-100 px-1.5 py-0.5 rounded-full">91%</span>
+                        <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
+                          91%
+                        </div>
                       </div>
-                      <div className="space-y-1">
-                        <p className="text-xs text-purple-700">• £85/hour • MediaCityUK</p>
-                        <p className="text-xs text-purple-700">• BBC Three, Manchester United FC</p>
-                        <p className="text-xs text-purple-700">• RED Komodo 6K, DaVinci Resolve</p>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                          <span className="text-purple-600">💰</span>
+                          <p className="text-sm text-purple-800 font-medium">£85/hour • MediaCityUK</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-purple-600">📺</span>
+                          <p className="text-sm text-purple-800 font-medium">BBC Three, Manchester United FC</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-purple-600">🎥</span>
+                          <p className="text-sm text-purple-800 font-medium">RED Komodo 6K, DaVinci Resolve</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Example 2 - UI/UX Designer for Fintech */}
-                <div className="bg-gray-50 rounded-xl p-4">
-                  <div className="text-center mb-3">
-                    <span className="text-xs font-mono text-blue-600 bg-blue-100 px-2 py-1 rounded-full">Fintech Example</span>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="bg-white rounded-lg p-2">
-                      <p className="text-xs text-gray-500 mb-1">Search Query:</p>
-                      <p className="text-xs text-gray-900 font-medium">"Need UI/UX designer with fintech experience to redesign business banking app for UK SMEs"</p>
+                <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-5 border-2 border-blue-200 shadow-lg hover:shadow-xl transition-all">
+                  <div className="flex items-center justify-center mb-4">
+                    <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-1.5 rounded-full text-xs font-mono font-semibold shadow-md">
+                      💻 Fintech
                     </div>
-                    <div className="bg-blue-50 rounded-lg p-2 border border-blue-200">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2">
-                          <div className="w-5 h-5 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white text-xs font-bold">
+                  </div>
+                  <div className="space-y-3">
+                    <div className="bg-white rounded-xl p-3 shadow-sm border border-blue-100">
+                      <p className="text-xs text-gray-500 mb-1 font-mono uppercase tracking-wider">Search Query:</p>
+                      <p className="text-sm text-gray-900 font-semibold leading-relaxed">"Need UI/UX designer with fintech experience to redesign business banking app for UK SMEs"</p>
+                    </div>
+                    <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-4 border-2 border-blue-200">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center text-white font-bold text-sm shadow-md">
                             DC
                           </div>
                           <div>
-                            <p className="text-xs font-semibold text-gray-900">David Chen</p>
-                            <p className="text-xs text-gray-600">UI/UX Designer • London</p>
+                            <p className="text-sm font-bold text-gray-900">David Chen</p>
+                            <p className="text-xs text-blue-600">UI/UX Designer • London</p>
                           </div>
                         </div>
-                        <span className="text-xs font-mono text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded-full">94%</span>
+                        <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
+                          94%
+                        </div>
                       </div>
-                      <div className="space-y-1">
-                        <p className="text-xs text-blue-700">• £80/hour • Old Street Tech City</p>
-                        <p className="text-xs text-blue-700">• Starling Bank, Monzo, NHS Digital</p>
-                        <p className="text-xs text-blue-700">• GDS Certified, WCAG 2.1 Expert</p>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                          <span className="text-blue-600">💰</span>
+                          <p className="text-sm text-blue-800 font-medium">£80/hour • Old Street Tech City</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-blue-600">🏦</span>
+                          <p className="text-sm text-blue-800 font-medium">Starling Bank, Monzo, NHS Digital</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-blue-600">✅</span>
+                          <p className="text-sm text-blue-800 font-medium">GDS Certified, WCAG 2.1 Expert</p>
+                        </div>
                       </div>
                     </div>
                   </div>
